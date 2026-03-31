@@ -87,7 +87,7 @@ export function ExperienceSection() {
                   />
                 </div>
 
-                <div className="border border-[rgba(26,26,26,0.10)] dark:border-[rgba(232,224,213,0.10)] hover:border-[rgba(26,26,26,0.20)] dark:hover:border-[rgba(232,224,213,0.20)] transition-colors p-[16px_18px]">
+                <div className="rounded-sm border border-[rgba(26,26,26,0.10)] bg-[rgba(255,255,255,0.62)] dark:bg-[rgba(16,16,16,0.55)] supports-backdrop-filter:backdrop-blur-[3px] dark:supports-backdrop-filter:backdrop-blur-xs dark:border-[rgba(232,224,213,0.10)] hover:border-[rgba(26,26,26,0.20)] dark:hover:border-[rgba(232,224,213,0.20)] transition-colors p-[16px_18px]">
                   {entry.present && (
                     <div className="flex items-center gap-1.5 mb-2">
                       <span className="relative flex h-1.5 w-1.5">
@@ -104,19 +104,19 @@ export function ExperienceSection() {
                     </div>
                   )}
 
-                  <h3 className="font-sans text-[13px] font-medium text-text">
+                  <h3 className="font-sans text-[14px] font-medium text-text leading-snug">
                     {entry.role}
                   </h3>
 
-                  <p className="font-mono text-[11px] text-accent mt-[3px]">
+                  <p className="font-mono text-[11px] text-accent mt-1">
                     {entry.company}
                   </p>
 
-                  <p className="font-mono text-[10px] text-muted mt-[2px]">
+                  <p className="font-mono text-[10px] text-muted mt-1">
                     {entry.period} &middot; {entry.location}
                   </p>
 
-                  <p className="font-sans text-[12px] leading-[1.6] mt-[10px] text-[rgba(26,26,26,0.55)] dark:text-[rgba(232,224,213,0.55)]">
+                  <p className="font-sans text-[12px] leading-[1.7] mt-3 text-[rgba(26,26,26,0.66)] dark:text-[rgba(232,224,213,0.68)]">
                     {entry.description}
                   </p>
 

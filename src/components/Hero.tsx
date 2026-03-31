@@ -45,10 +45,6 @@ export function Hero() {
             <p className="text-xs uppercase tracking-widest text-muted">
               Software Developer
             </p>
-            <p className="mt-2 flex items-center gap-2 text-xs text-muted">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-green-500" />
-              Available
-            </p>
           </div>
         </div>
 

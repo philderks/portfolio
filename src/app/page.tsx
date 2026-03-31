@@ -2,8 +2,7 @@ import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
 import { ExperienceSection } from "@/components/ExperienceSection";
 import { ProjectsSection } from "@/components/ProjectsSection";
-import { Contact } from "@/components/Contact";
-import { Footer } from "@/components/Footer";
+import { ContactSection } from "@/components/ContactSection";
 import { GridLines } from "@/components/GridLines";
 import { getPinnedRepos } from "@/lib/github";
 
@@ -21,9 +20,8 @@ export default async function Home() {
           <About />
           <ExperienceSection />
           <ProjectsSection repos={repos} />
-          <Contact />
         </main>
-        <Footer />
+        <ContactSection />
       </div>
     </>
   );
