@@ -43,11 +43,11 @@ export function ProjectsSection({ repos }: { repos: PinnedRepo[] }) {
             </p>
           </div>
         ) : (
-          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px">
+          <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:gap-5 xl:grid-cols-3">
             {repos.map((repo) => (
               <li
                 key={repo.name}
-                className="relative flex flex-col border border-[rgba(26,26,26,0.10)] dark:border-[rgba(232,224,213,0.10)] hover:border-[rgba(26,26,26,0.20)] dark:hover:border-[rgba(232,224,213,0.20)] transition-colors p-5"
+                className="group relative flex min-h-[230px] flex-col border border-[rgba(26,26,26,0.10)] p-5 transition-colors hover:border-[rgba(26,26,26,0.20)] dark:border-[rgba(232,224,213,0.10)] dark:hover:border-[rgba(232,224,213,0.20)] sm:p-6"
               >
                   <h3 className="font-sans text-[13px] font-medium text-text">
                     {formatRepoName(repo.name)}
@@ -100,7 +100,7 @@ export function ProjectsSection({ repos }: { repos: PinnedRepo[] }) {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`${formatRepoName(repo.name)} on GitHub`}
-                    className="absolute top-4 right-4 font-display text-[15px] font-bold leading-tight transition-colors hover:text-accent text-muted"
+                    className="absolute right-4 top-4 font-display text-[15px] font-bold leading-tight text-muted transition-colors group-hover:text-accent sm:right-5 sm:top-5"
                   >
                     &#8599;
                   </a>
