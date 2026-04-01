@@ -25,40 +25,63 @@ export function ContactSection() {
   return (
     <footer
       aria-label="Contact"
-      className="relative border-t border-[rgba(26,26,26,0.10)] dark:border-[rgba(232,224,213,0.10)] overflow-hidden"
+      className="relative border-t border-border overflow-hidden"
     >
-      <div
-        className="absolute inset-0 pointer-events-none [--grid-line:rgba(26,26,26,0.06)] dark:[--grid-line:rgba(232,224,213,0.07)]"
-        style={{
-          backgroundImage:
-            "linear-gradient(90deg, var(--grid-line) 1px, transparent 1px)",
-          backgroundSize: "calc(100% / 12) 100%",
-        }}
-        aria-hidden="true"
-      />
+      {/* Contact area */}
+      <div className="relative mx-auto max-w-6xl px-6 py-16">
+        <div className="flex items-baseline gap-3 border-b border-border pb-4 mb-8">
+          <span className="font-mono text-[11px] text-cyan">04</span>
+          <span className="font-mono text-[8px] uppercase tracking-[0.18em] text-muted">
+            Contact
+          </span>
+        </div>
 
-      <div className="relative mx-auto max-w-6xl flex justify-between items-end py-5 px-6">
-        <span className="font-mono text-[10px] uppercase tracking-widest text-[rgba(26,26,26,0.20)] dark:text-[rgba(232,224,213,0.20)]">
-          Philipp Derks &middot; {currentYear}
-        </span>
+        <div className="flex flex-col justify-between gap-12 md:flex-row md:items-end">
+          <div>
+            <h2 className="font-display text-3xl font-extrabold tracking-tight text-fg md:text-4xl">
+              Let&apos;s build something good.
+            </h2>
+            <p className="mt-4 max-w-lg font-sans text-base leading-relaxed text-dim">
+              Got an interesting project or just want to say hi? I&apos;m always
+              open to discussing new opportunities and ideas.
+            </p>
+          </div>
 
-        <nav className="flex flex-col items-end gap-3">
-          {links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              aria-label={link.ariaLabel}
-              {...(link.external
-                ? { target: "_blank", rel: "noopener noreferrer" }
-                : {})}
-              className="font-mono text-[15px] uppercase tracking-[0.14em] text-[rgba(26,26,26,0.52)] dark:text-[rgba(232,224,213,0.58)] hover:text-text transition-colors duration-150"
-            >
-              {link.label}
-              <span className="ml-1 text-[12px] text-accent">&#8599;</span>
-            </a>
-          ))}
-        </nav>
+          <nav className="flex flex-col items-start gap-3 md:items-end">
+            {links.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                aria-label={link.ariaLabel}
+                {...(link.external
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+                className="font-mono text-[13px] uppercase tracking-[0.14em] text-dim hover:text-cyan transition-colors duration-150"
+              >
+                {link.label}
+                {link.external && (
+                  <span className="ml-1 text-[12px] text-cyan">&#8599;</span>
+                )}
+              </a>
+            ))}
+          </nav>
+        </div>
       </div>
+
+      {/* Footer bar */}
+      <div className="border-t border-border px-6 py-5">
+        <div className="mx-auto flex max-w-6xl items-center justify-between">
+          <span className="font-mono text-[9px] uppercase tracking-widest text-muted">
+            &copy; {currentYear} derks.dev
+          </span>
+          <span className="font-mono text-[9px] text-muted">
+            Next.js &middot; Tailwind &middot; Vercel
+          </span>
+        </div>
+      </div>
+
+      {/* Bottom rainbow line */}
+      <div className="rainbow-line" />
     </footer>
   );
 }

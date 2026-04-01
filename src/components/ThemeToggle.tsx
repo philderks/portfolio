@@ -18,20 +18,20 @@ export function ThemeToggle() {
   const mounted = useIsMounted();
 
   if (!mounted) {
-    return <button className="h-9 w-9" aria-label="Toggle theme" />;
+    return <button className="h-8 w-8" aria-label="Toggle theme" />;
   }
 
   return (
     <button
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="flex h-9 w-9 items-center justify-center rounded-md border border-border text-muted transition-colors hover:text-text hover:border-muted"
+      className="flex h-8 w-8 items-center justify-center border border-border text-dim transition-colors hover:text-fg hover:border-dim"
       aria-label="Toggle theme"
     >
       {theme === "dark" ? (
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
+          width="14"
+          height="14"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -52,8 +52,8 @@ export function ThemeToggle() {
       ) : (
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
+          width="14"
+          height="14"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"

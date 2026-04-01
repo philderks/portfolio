@@ -19,16 +19,21 @@ export function About() {
   return (
     <section id="about" className="border-t border-border px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <p className="mb-12 text-sm text-muted">01 &mdash; About</p>
+        <div className="flex items-baseline gap-3 border-b border-border pb-4 mb-12">
+          <span className="font-mono text-[11px] text-cyan">01</span>
+          <span className="font-mono text-[8px] uppercase tracking-[0.18em] text-muted">
+            About
+          </span>
+        </div>
 
         <div className="grid gap-16 md:grid-cols-2">
           <div>
-            <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-4xl">
+            <h2 className="font-display text-3xl font-extrabold tracking-tight text-fg md:text-4xl">
               Building software that
               <br />
               actually works.
             </h2>
-            <p className="mt-6 text-base leading-relaxed text-muted">
+            <p className="mt-6 font-sans text-base leading-relaxed text-dim">
               I&apos;m a software engineer with a focus on full-stack development
               and distributed systems. I care about performance, clean
               architecture, and shipping products that make a difference. When
@@ -38,24 +43,28 @@ export function About() {
           </div>
 
           <div>
-            <p className="mb-4 text-sm text-muted">Primary Stack</p>
+            <p className="mb-4 font-mono text-[10px] uppercase tracking-widest text-muted">
+              Primary Stack
+            </p>
             <div className="mb-8 flex flex-wrap gap-2">
               {primarySkills.map((skill) => (
                 <span
                   key={skill}
-                  className="rounded-md border border-accent/40 bg-accent/10 px-3 py-1 text-xs text-accent"
+                  className="border border-cyan/30 bg-cyan/5 px-3 py-1 font-mono text-[10px] text-cyan"
                 >
                   {skill}
                 </span>
               ))}
             </div>
 
-            <p className="mb-4 text-sm text-muted">Tools &amp; Infrastructure</p>
+            <p className="mb-4 font-mono text-[10px] uppercase tracking-widest text-muted">
+              Tools &amp; Infrastructure
+            </p>
             <div className="flex flex-wrap gap-2">
               {secondarySkills.map((skill) => (
                 <span
                   key={skill}
-                  className="rounded-md border border-border px-3 py-1 text-xs text-muted"
+                  className="border border-border px-3 py-1 font-mono text-[10px] text-muted"
                 >
                   {skill}
                 </span>
