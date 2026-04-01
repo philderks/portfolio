@@ -1,12 +1,19 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, DM_Sans, DM_Mono } from "next/font/google";
+import { Syne, Space_Mono, DM_Sans } from "next/font/google";
 import { Providers } from "@/components/Providers";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
+const syne = Syne({
   subsets: ["latin"],
-  weight: ["700"],
-  variable: "--font-space-grotesk",
+  weight: ["700", "800"],
+  variable: "--font-syne",
+  display: "swap",
+});
+
+const spaceMono = Space_Mono({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-space-mono",
   display: "swap",
 });
 
@@ -14,13 +21,6 @@ const dmSans = DM_Sans({
   subsets: ["latin"],
   weight: ["400", "500"],
   variable: "--font-dm-sans",
-  display: "swap",
-});
-
-const dmMono = DM_Mono({
-  subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-dm-mono",
   display: "swap",
 });
 
@@ -37,11 +37,15 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${dmSans.variable} ${dmMono.variable} scroll-smooth`}
+      className={`${syne.variable} ${spaceMono.variable} ${dmSans.variable} scroll-smooth`}
       suppressHydrationWarning
     >
       <body>
-        <Providers>{children}</Providers>
+        <Providers>
+          <div className="rainbow-line" />
+          <div className="noise-overlay" aria-hidden="true" />
+          <div className="relative z-10">{children}</div>
+        </Providers>
       </body>
     </html>
   );

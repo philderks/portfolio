@@ -1,9 +1,9 @@
+import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
 import { ExperienceSection } from "@/components/ExperienceSection";
 import { ProjectsSection } from "@/components/ProjectsSection";
-import { Contact } from "@/components/Contact";
-import { Footer } from "@/components/Footer";
+import { ContactSection } from "@/components/ContactSection";
 import { GridLines } from "@/components/GridLines";
 import { getPinnedRepos } from "@/lib/github";
 
@@ -15,16 +15,14 @@ export default async function Home() {
   return (
     <>
       <GridLines />
-      <div className="relative z-10">
-        <Hero />
-        <main>
-          <About />
-          <ExperienceSection />
-          <ProjectsSection repos={repos} />
-          <Contact />
-        </main>
-        <Footer />
-      </div>
+      <Navbar />
+      <Hero />
+      <main>
+        <About />
+        <ExperienceSection />
+        <ProjectsSection repos={repos} />
+      </main>
+      <ContactSection />
     </>
   );
 }

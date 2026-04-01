@@ -1,123 +1,89 @@
-import { ThemeToggle } from "./ThemeToggle";
-
-const navLinks = [
-  { label: "Projects", href: "#projects" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
-];
-
-const stats = [
-  { value: "12+", label: "Projects" },
-  { value: "3 yr", label: "Experience" },
-  { value: "Zurich, CH", label: "Based" },
+const stackItems = [
+  { label: "Next.js", color: "var(--color-cyan)" },
+  { label: "TypeScript", color: "var(--color-green)" },
+  { label: "Tailwind", color: "var(--color-yellow)" },
+  { label: "Vercel", color: "var(--color-red)" },
 ];
 
 export function Hero() {
   return (
-    <section className="mx-auto max-w-6xl border-x border-grid">
-      {/* Top bar */}
-      <header className="flex items-center justify-between border-b border-grid px-6 py-4">
-        <a href="#" className="font-display text-sm font-bold tracking-tight text-accent">
-          Philipp Derks
-        </a>
-        <div className="flex items-center gap-6">
-          <nav className="hidden items-center gap-6 sm:flex">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-xs text-muted transition-colors hover:text-text"
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
-          <ThemeToggle />
-        </div>
-      </header>
-
-      {/* Three-column grid */}
-      <div className="grid min-h-[60vh] md:grid-cols-3">
+    <section className="mx-auto max-w-6xl">
+      {/* Two-column hero */}
+      <div className="grid md:grid-cols-[1fr_200px]">
         {/* Left column */}
-        <div className="flex flex-col justify-between border-b border-grid p-6 md:border-b-0 md:border-r">
-          <span className="text-xs text-muted">00 / HERO</span>
-          <div className="mt-16 md:mt-0">
-            <p className="text-xs uppercase tracking-widest text-muted">
-              Software Developer
-            </p>
-            <p className="mt-2 flex items-center gap-2 text-xs text-muted">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-green-500" />
-              Available
-            </p>
+        <div className="flex flex-col justify-center border-b border-border p-8 md:border-b-0 md:border-r md:p-12">
+          <div className="mb-6 flex items-center gap-3">
+            <span className="block h-px w-4 bg-muted" />
+            <span className="font-mono text-[10px] uppercase tracking-widest text-muted">
+              Zurich, Switzerland
+            </span>
           </div>
-        </div>
 
-        {/* Center column */}
-        <div className="flex items-center border-b border-grid p-6 md:border-b-0 md:border-r">
-          <h1 className="font-display text-6xl font-bold leading-[0.95] tracking-tight md:text-7xl lg:text-8xl">
-            Philipp
-            <br />
-            <span className="text-accent">Derks</span>
-          </h1>
-        </div>
-
-        {/* Right column — intentional whitespace */}
-        <div className="hidden md:block" />
-      </div>
-
-      {/* Stats strip */}
-      <div className="grid grid-cols-2 border-t border-grid md:grid-cols-4">
-        {stats.map((stat, i) => (
-          <div
-            key={stat.label}
-            className={`px-6 py-5 ${i > 0 ? "border-l border-grid" : ""}`}
+          <h1
+            className="font-display leading-none tracking-normal"
+            style={{ fontSize: "clamp(2.8rem, 8vw, 5rem)", fontWeight: 800 }}
           >
-            <p className="font-display text-[15px] font-bold leading-tight">
-              {stat.value}
-            </p>
-            <p className="mt-1 font-sans text-[10px] uppercase tracking-wider text-muted">
-              {stat.label}
-            </p>
-          </div>
-        ))}
+            <span className="text-fg">PHILIPP</span>
+            <br />
+            <span className="text-stroke-cyan">DERKS</span>
+          </h1>
 
-        {/* Socials cell */}
-        <div className="border-l border-grid px-6 py-5">
-          <div className="flex items-center gap-4">
+          <p className="mt-6 max-w-md font-sans text-[0.95rem] leading-relaxed text-dim">
+            Software engineer with a focus on full-stack development and
+            distributed systems. MSc from{" "}
+            <span className="text-cyan">ETH Zürich</span>.
+          </p>
+
+          <div className="mt-8 flex items-center gap-3">
             <a
-              href="https://github.com/philderks"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-display text-[15px] font-bold leading-tight transition-colors hover:text-accent"
+              href="mailto:hello@derks.dev"
+              className="bg-cyan px-5 py-2.5 font-mono text-[10px] font-bold uppercase tracking-widest text-[#0a0a0a]"
             >
-              &#8599;
+              Get in touch
             </a>
             <a
-              href="https://www.linkedin.com/in/philderks/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-display text-[15px] font-bold leading-tight transition-colors hover:text-accent"
+              href="#projects"
+              className="border border-border px-5 py-2.5 font-mono text-[10px] font-bold uppercase tracking-widest text-fg transition-colors hover:border-muted"
             >
-              &#8599;
+              View work
             </a>
           </div>
-          <div className="mt-1 flex items-center gap-4">
-            <a
-              href="https://github.com/philderks"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-sans text-[10px] uppercase tracking-wider text-muted transition-colors hover:text-text"
-            >
-              GitHub
-            </a>
-            <a
-              href="https://www.linkedin.com/in/philderks/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-sans text-[10px] uppercase tracking-wider text-muted transition-colors hover:text-text"
-            >
-              LinkedIn
-            </a>
+        </div>
+
+        {/* Right sidebar */}
+        <div className="hidden flex-col border-b border-border md:flex">
+          {/* Stack block */}
+          <div className="border-b border-border p-4">
+            <span className="mb-3 block font-mono text-[8px] uppercase tracking-[0.2em] text-muted">
+              Stack
+            </span>
+            <div className="space-y-2">
+              {stackItems.map((item) => (
+                <div key={item.label} className="flex items-center gap-2">
+                  <span
+                    className="inline-block h-2 w-2"
+                    style={{ backgroundColor: item.color }}
+                  />
+                  <span className="font-mono text-[10px] text-fg">{item.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Experience block */}
+          <div className="border-b border-border p-4">
+            <span className="mb-2 block font-mono text-[8px] uppercase tracking-[0.2em] text-muted">
+              Experience
+            </span>
+            <span className="font-mono text-[13px] font-bold text-fg">3+ years</span>
+          </div>
+
+          {/* Status block */}
+          <div className="p-4">
+            <span className="mb-2 block font-mono text-[8px] uppercase tracking-[0.2em] text-muted">
+              Status
+            </span>
+            <span className="font-mono text-[13px] font-bold text-green">Available</span>
           </div>
         </div>
       </div>
