@@ -16,7 +16,7 @@ export function ProjectsSection({ repos }: { repos: PinnedRepo[] }) {
     <section
       id="projects"
       aria-label="Projects"
-      className="relative border-t border-border px-6 py-24 overflow-hidden"
+      className="relative scroll-mt-20 border-t border-border px-6 py-24 overflow-hidden"
     >
       <div className="relative mx-auto max-w-6xl">
         <div className="flex items-baseline gap-3 border-b border-border pb-4 mb-12">

@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import { ThemeToggle } from "./ThemeToggle";
 
 const navLinks = [
-  { label: "Projects", href: "#projects" },
   { label: "About", href: "#about" },
+  { label: "Experience", href: "#experience" },
+  { label: "Projects", href: "#projects" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -25,16 +26,22 @@ export function Navbar() {
         scrolled ? "bg-bg/80 backdrop-blur-md" : "bg-bg"
       }`}
     >
-      <a href="#" className="font-mono text-sm font-bold tracking-tight text-fg">
+      <a
+        href="#"
+        className="shrink-0 font-mono text-sm font-bold tracking-tight text-fg"
+      >
         derks<span className="text-cyan">.dev</span>
       </a>
-      <div className="flex items-center gap-6">
-        <nav className="hidden items-center gap-6 sm:flex">
+      <div className="flex min-w-0 flex-1 items-center justify-end gap-3 sm:gap-6">
+        <nav
+          className="flex max-w-full flex-wrap items-center justify-end gap-x-2.5 gap-y-1 sm:gap-x-6 sm:gap-y-0"
+          aria-label="Page sections"
+        >
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="font-mono text-[10px] uppercase tracking-widest text-muted transition-colors hover:text-fg"
+              className="font-mono text-[9px] uppercase tracking-wide text-muted transition-colors hover:text-fg sm:text-[10px] sm:tracking-widest"
             >
               {link.label}
             </a>

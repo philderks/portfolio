@@ -1,21 +1,12 @@
+import { socialProfileLinks } from "@/data/social-links";
+
 const links = [
-  {
-    label: "GitHub",
-    href: "https://github.com/philderks",
-    ariaLabel: "GitHub profile",
-    external: true,
-  },
-  {
-    label: "LinkedIn",
-    href: "https://linkedin.com/in/philderks",
-    ariaLabel: "LinkedIn profile",
-    external: true,
-  },
+  ...socialProfileLinks.map((link) => ({ ...link, external: true as const })),
   {
     label: "hello@derks.dev",
     href: "mailto:hello@derks.dev",
     ariaLabel: "Send email",
-    external: false,
+    external: false as const,
   },
 ];
 
@@ -24,8 +15,9 @@ export function ContactSection() {
 
   return (
     <footer
+      id="contact"
       aria-label="Contact"
-      className="relative border-t border-border overflow-hidden"
+      className="relative border-t border-border overflow-hidden scroll-mt-20"
     >
       {/* Contact area */}
       <div className="relative mx-auto max-w-6xl px-6 py-16">

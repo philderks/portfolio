@@ -1,3 +1,7 @@
+import experienceData from "@/data/experience.json";
+import { socialProfileLinks } from "@/data/social-links";
+import { formatCareerTenure, type ExperienceEntry } from "@/lib/experience";
+
 const stackItems = [
   { label: "Next.js", color: "var(--color-cyan)" },
   { label: "TypeScript", color: "var(--color-green)" },
@@ -6,12 +10,16 @@ const stackItems = [
 ];
 
 export function Hero() {
+  const experienceLabel = formatCareerTenure(
+    experienceData as ExperienceEntry[],
+  );
+
   return (
     <section className="mx-auto max-w-6xl">
       {/* Two-column hero */}
-      <div className="grid md:grid-cols-[1fr_200px]">
+      <div className="grid min-h-[70vh] md:grid-cols-[1fr_200px] md:min-h-[72vh]">
         {/* Left column */}
-        <div className="flex flex-col justify-center border-b border-border p-8 md:border-b-0 md:border-r md:p-12">
+        <div className="flex flex-col justify-center border-b border-border px-8 py-16 md:border-b-0 md:border-r md:px-12 md:py-24">
           <div className="mb-6 flex items-center gap-3">
             <span className="block h-px w-4 bg-muted" />
             <span className="font-mono text-[10px] uppercase tracking-widest text-muted">
@@ -47,6 +55,25 @@ export function Hero() {
               View work
             </a>
           </div>
+
+          <nav
+            className="mt-8 flex flex-wrap gap-x-6 gap-y-2"
+            aria-label="Social profiles"
+          >
+            {socialProfileLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                aria-label={link.ariaLabel}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-mono text-[10px] uppercase tracking-widest text-muted transition-colors hover:text-cyan"
+              >
+                {link.label}
+                <span className="ml-0.5 text-cyan">&#8599;</span>
+              </a>
+            ))}
+          </nav>
         </div>
 
         {/* Right sidebar */}
@@ -74,15 +101,19 @@ export function Hero() {
             <span className="mb-2 block font-mono text-[8px] uppercase tracking-[0.2em] text-muted">
               Experience
             </span>
-            <span className="font-mono text-[13px] font-bold text-fg">3+ years</span>
+            <span className="font-mono text-[13px] font-bold text-fg">
+              {experienceLabel}
+            </span>
           </div>
 
-          {/* Status block */}
+          {/* Focus block */}
           <div className="p-4">
             <span className="mb-2 block font-mono text-[8px] uppercase tracking-[0.2em] text-muted">
-              Status
+              Focus
             </span>
-            <span className="font-mono text-[13px] font-bold text-green">Available</span>
+            <span className="font-mono text-[13px] font-bold leading-snug text-fg">
+              Full-stack · Distributed systems
+            </span>
           </div>
         </div>
       </div>
