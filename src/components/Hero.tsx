@@ -30,8 +30,7 @@ export function Hero() {
 
           <p className="mt-6 max-w-md font-sans text-[0.95rem] leading-relaxed text-dim">
             Software engineer with a focus on full-stack development and
-            distributed systems. MSc from{" "}
-            <span className="text-cyan">ETH Zürich</span>.
+            distributed systems. Working at <a href="https://www.ethz.ch" className="text-cyan">ETH Zürich</a>.
           </p>
 
           <div className="mt-8 flex items-center gap-3">
