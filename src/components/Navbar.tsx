@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ThemeToggle } from "./ThemeToggle";
 
@@ -8,6 +9,11 @@ const navLinks = [
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
   { label: "Contact", href: "#contact" },
+];
+
+const legalLinks = [
+  { label: "Impressum", href: "/impressum" },
+  { label: "Datenschutz", href: "/datenschutz" },
 ];
 
 export function Navbar() {
@@ -45,6 +51,17 @@ export function Navbar() {
             >
               {link.label}
             </a>
+          ))}
+        </nav>
+        <nav className="hidden items-center gap-3 md:flex">
+          {legalLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="font-mono text-[10px] uppercase tracking-widest text-muted transition-colors hover:text-fg"
+            >
+              {link.label}
+            </Link>
           ))}
         </nav>
         <ThemeToggle />
