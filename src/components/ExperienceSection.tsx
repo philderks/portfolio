@@ -1,29 +1,14 @@
 import experienceData from "@/data/experience.json";
-
-type Experience = {
-  role: string;
-  company: string;
-  type: string;
-  period: string;
-  present: boolean;
-  location: string;
-  description: string;
-  tags: string[];
-};
-
-function parseYear(period: string): string {
-  const match = period.match(/\b(\d{4})\b/);
-  return match ? match[1] : "";
-}
+import { startYear, type ExperienceEntry } from "@/lib/experience";
 
 export function ExperienceSection() {
-  const data = experienceData as Experience[];
+  const data = experienceData as ExperienceEntry[];
 
   return (
     <section
       id="experience"
       aria-label="Experience"
-      className="relative border-t border-border px-6 py-24 overflow-hidden"
+      className="relative scroll-mt-20 border-t border-border px-6 py-24 overflow-hidden"
     >
       <div className="relative mx-auto max-w-6xl">
         <div className="flex items-baseline gap-3 border-b border-border pb-4 mb-12">
@@ -51,7 +36,7 @@ export function ExperienceSection() {
               >
                 <div className="pt-4 text-right">
                   <div className="font-mono text-[11px] text-cyan">
-                    {parseYear(entry.period)}
+                    {startYear(entry.start)}
                   </div>
                   <div className="font-mono text-[10px] uppercase text-muted mt-1">
                     {entry.present ? "Now" : ""}

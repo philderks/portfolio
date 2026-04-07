@@ -5,6 +5,8 @@
     "type": "Azubi",
     "period": "Aug 2025 — Present",
     "present": true,
+    "start": "2025-08-01",
+    "end": null,
     "location": "Zürich, Switzerland",
     "description": "Full-stack development in a fast-paced startup environment at ETH Zürich.",
     "tags": ["Python", "Customerservice"]
@@ -15,6 +17,8 @@
     "type": "Azubi",
     "period": "Aug 2023 — Present",
     "present": true,
+    "start": "2023-08-01",
+    "end": null,
     "location": "Zürich, Switzerland",
     "description": "Core apprenticeship in software development. Building practical applications across the full stack.",
     "tags": ["Vue.js", "Spring Framework"]

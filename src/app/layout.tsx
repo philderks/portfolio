@@ -25,8 +25,8 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Philipp Derks",
-  description: "Software engineer portfolio — derks.dev",
+  title: "Philipp Derks | Portfolio",
+  description: "Software engineer portfolio — Philipp Derks",
 };
 
 export default function RootLayout({
@@ -37,7 +37,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${syne.variable} ${spaceMono.variable} ${dmSans.variable} scroll-smooth`}
+      className={`${syne.variable} ${spaceMono.variable} ${dmSans.variable} scroll-smooth scroll-pt-20`}
       suppressHydrationWarning
     >
       <body>

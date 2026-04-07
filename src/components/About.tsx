@@ -17,7 +17,10 @@ const secondarySkills = [
 
 export function About() {
   return (
-    <section id="about" className="border-t border-border px-6 py-24">
+    <section
+      id="about"
+      className="scroll-mt-20 border-t border-border px-6 py-24"
+    >
       <div className="mx-auto max-w-6xl">
         <div className="flex items-baseline gap-3 border-b border-border pb-4 mb-12">
           <span className="font-mono text-[11px] text-cyan">01</span>
