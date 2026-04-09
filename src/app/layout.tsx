@@ -40,6 +40,9 @@ export default function RootLayout({
       className={`${syne.variable} ${spaceMono.variable} ${dmSans.variable} scroll-smooth scroll-pt-20`}
       suppressHydrationWarning
     >
+      <head>
+        <meta name="darkreader-lock" />
+      </head>
       <body>
         <Providers>
           <div className="rainbow-line" />

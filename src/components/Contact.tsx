@@ -1,3 +1,5 @@
+import { ObfuscatedEmailLink } from "@/components/ObfuscatedEmailLink";
+
 export function Contact() {
   return (
     <section id="contact" className="border-t border-border px-6 py-24">
@@ -14,12 +16,7 @@ export function Contact() {
         </p>
 
         <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-8">
-          <a
-            href="mailto:philipp@derks.dev"
-            className="text-base text-text underline decoration-accent underline-offset-4 transition-colors hover:text-accent"
-          >
-            philipp@derks.dev
-          </a>
+          <ObfuscatedEmailLink className="text-base text-text underline decoration-accent underline-offset-4 transition-colors hover:text-accent" />
           <a
             href="https://github.com/philippderks"
             target="_blank"

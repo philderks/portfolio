@@ -1,6 +1,7 @@
 import experienceData from "@/data/experience.json";
 import { socialProfileLinks } from "@/data/social-links";
 import { formatCareerTenure, type ExperienceEntry } from "@/lib/experience";
+import { ObfuscatedEmailLink } from "@/components/ObfuscatedEmailLink";
 
 const stackItems = [
   { label: "Next.js", color: "var(--color-cyan)" },
@@ -42,12 +43,9 @@ export function Hero() {
           </p>
 
           <div className="mt-8 flex items-center gap-3">
-            <a
-              href="mailto:philipp@derks.dev"
-              className="bg-cyan px-5 py-2.5 font-mono text-[10px] font-bold uppercase tracking-widest text-[#0a0a0a]"
-            >
+            <ObfuscatedEmailLink className="bg-cyan px-5 py-2.5 font-mono text-[10px] font-bold uppercase tracking-widest text-[#0a0a0a]">
               Get in touch
-            </a>
+            </ObfuscatedEmailLink>
             <a
               href="#projects"
               className="border border-border px-5 py-2.5 font-mono text-[10px] font-bold uppercase tracking-widest text-fg transition-colors hover:border-muted"

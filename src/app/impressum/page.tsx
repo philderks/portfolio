@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ObfuscatedEmailLink } from "@/components/ObfuscatedEmailLink";
 
 export const metadata: Metadata = {
   title: "Impressum | derks.dev",
@@ -24,7 +25,8 @@ export default function ImpressumPage() {
         <section>
           <h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-fg">Kontakt</h2>
           <p className="mt-2">
-            E-Mail: philipp@derks.dev
+            E-Mail:{" "}
+            <ObfuscatedEmailLink className="underline decoration-cyan underline-offset-4 hover:opacity-80" />
           </p>
         </section>
 

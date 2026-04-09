@@ -1,14 +1,9 @@
 import { socialProfileLinks } from "@/data/social-links";
 import Link from "next/link";
+import { ObfuscatedEmailLink } from "@/components/ObfuscatedEmailLink";
 
 const links = [
   ...socialProfileLinks.map((link) => ({ ...link, external: true as const })),
-  {
-    label: "philipp@derks.dev",
-    href: "mailto:philipp@derks.dev",
-    ariaLabel: "Send email",
-    external: false as const,
-  },
 ];
 
 export function ContactSection() {
@@ -41,6 +36,7 @@ export function ContactSection() {
           </div>
 
           <nav className="flex flex-col items-start gap-3 md:items-end">
+            <ObfuscatedEmailLink className="font-mono text-[13px] uppercase tracking-[0.14em] text-dim hover:text-cyan transition-colors duration-150" />
             {links.map((link) => (
               <a
                 key={link.href}
