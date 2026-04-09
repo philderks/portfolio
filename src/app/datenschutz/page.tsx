@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ObfuscatedEmailLink } from "@/components/ObfuscatedEmailLink";
 
 export const metadata: Metadata = {
   title: "Datenschutz | derks.dev",
@@ -18,7 +19,8 @@ export default function DatenschutzPage() {
             <br />
             Zurich, Switzerland
             <br />{" "}
-            E-Mail: philipp@derks.dev
+            E-Mail:{" "}
+            <ObfuscatedEmailLink className="underline decoration-cyan underline-offset-4 hover:opacity-80" />
           </p>
         </section>
 

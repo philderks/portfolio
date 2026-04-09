@@ -1,3 +1,5 @@
+import { UserRound } from "lucide-react";
+
 const primarySkills = [
   "Vue.js",
   "React",
@@ -24,7 +26,8 @@ export function About() {
       <div className="mx-auto max-w-6xl">
         <div className="flex items-baseline gap-3 border-b border-border pb-4 mb-12">
           <span className="font-mono text-[11px] text-cyan">01</span>
-          <span className="font-mono text-[8px] uppercase tracking-[0.18em] text-muted">
+          <span className="inline-flex items-center gap-1.5 font-mono text-[8px] uppercase tracking-[0.18em] text-muted">
+            <UserRound className="h-3 w-3" aria-hidden="true" />
             About
           </span>
         </div>
