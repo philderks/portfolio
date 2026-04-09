@@ -6,8 +6,8 @@ type Props = {
   className?: string;
   ariaLabel?: string;
   children?: React.ReactNode;
-  /** Default is a copy-friendly obfuscated label like "name [at] domain [dot] tld". */
-  obfuscatedLabel?: string;
+  /** Visible label text. Defaults to the normal-looking email address. */
+  label?: string;
 };
 
 function decodeAscii(codes: readonly number[]) {
@@ -22,7 +22,7 @@ export function ObfuscatedEmailLink({
   className,
   ariaLabel = "Send email",
   children,
-  obfuscatedLabel = "philipp [at] derks [dot] dev",
+  label = "philipp@derks.dev",
 }: Props) {
   const handleClick = React.useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -35,7 +35,7 @@ export function ObfuscatedEmailLink({
 
   return (
     <a href="#email" onClick={handleClick} aria-label={ariaLabel} className={className}>
-      {children ?? obfuscatedLabel}
+      {children ?? label}
     </a>
   );
 }
