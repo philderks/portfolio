@@ -1,10 +1,19 @@
 import { socialProfileLinks } from "@/data/social-links";
 import Link from "next/link";
 import { ObfuscatedEmailLink } from "@/components/ObfuscatedEmailLink";
+import { ArrowUpRight, GitBranch, Link2, Mail } from "lucide-react";
 
 const links = [
   ...socialProfileLinks.map((link) => ({ ...link, external: true as const })),
 ];
+
+function SocialIcon({ icon }: { icon: "github" | "linkedin" }) {
+  if (icon === "github") {
+    return <GitBranch className="h-3.5 w-3.5" aria-hidden="true" />;
+  }
+
+  return <Link2 className="h-3.5 w-3.5" aria-hidden="true" />;
+}
 
 export function ContactSection() {
   const currentYear = new Date().getFullYear();
@@ -19,7 +28,8 @@ export function ContactSection() {
       <div className="relative mx-auto max-w-6xl px-6 py-16">
         <div className="flex items-baseline gap-3 border-b border-border pb-4 mb-8">
           <span className="font-mono text-[11px] text-cyan">04</span>
-          <span className="font-mono text-[8px] uppercase tracking-[0.18em] text-muted">
+          <span className="inline-flex items-center gap-1.5 font-mono text-[8px] uppercase tracking-[0.18em] text-muted">
+            <Mail className="h-3 w-3" aria-hidden="true" />
             Contact
           </span>
         </div>
@@ -36,7 +46,10 @@ export function ContactSection() {
           </div>
 
           <nav className="flex flex-col items-start gap-3 md:items-end">
-            <ObfuscatedEmailLink className="font-mono text-[13px] uppercase tracking-[0.14em] text-dim hover:text-cyan transition-colors duration-150" />
+            <ObfuscatedEmailLink className="inline-flex items-center gap-1.5 font-mono text-[13px] uppercase tracking-[0.14em] text-dim hover:text-cyan transition-colors duration-150">
+              <Mail className="h-3.5 w-3.5" aria-hidden="true" />
+              Email
+            </ObfuscatedEmailLink>
             {links.map((link) => (
               <a
                 key={link.href}
@@ -45,11 +58,12 @@ export function ContactSection() {
                 {...(link.external
                   ? { target: "_blank", rel: "noopener noreferrer" }
                   : {})}
-                className="font-mono text-[13px] uppercase tracking-[0.14em] text-dim hover:text-cyan transition-colors duration-150"
+                className="inline-flex items-center gap-1.5 font-mono text-[13px] uppercase tracking-[0.14em] text-dim hover:text-cyan transition-colors duration-150"
               >
+                <SocialIcon icon={link.icon} />
                 {link.label}
                 {link.external && (
-                  <span className="ml-1 text-[12px] text-cyan">&#8599;</span>
+                  <ArrowUpRight className="h-3.5 w-3.5 text-cyan" aria-hidden="true" />
                 )}
               </a>
             ))}

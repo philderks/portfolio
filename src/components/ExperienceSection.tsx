@@ -1,5 +1,6 @@
 import experienceData from "@/data/experience.json";
 import { startYear, type ExperienceEntry } from "@/lib/experience";
+import { BriefcaseBusiness, CalendarRange, Circle, MapPin, Radio } from "lucide-react";
 
 export function ExperienceSection() {
   const data = experienceData as ExperienceEntry[];
@@ -13,7 +14,8 @@ export function ExperienceSection() {
       <div className="relative mx-auto max-w-6xl">
         <div className="flex items-baseline gap-3 border-b border-border pb-4 mb-12">
           <span className="font-mono text-[11px] text-cyan">02</span>
-          <span className="font-mono text-[8px] uppercase tracking-[0.18em] text-muted">
+          <span className="inline-flex items-center gap-1.5 font-mono text-[8px] uppercase tracking-[0.18em] text-muted">
+            <BriefcaseBusiness className="h-3 w-3" aria-hidden="true" />
             Experience
           </span>
         </div>
@@ -44,14 +46,15 @@ export function ExperienceSection() {
                 </div>
 
                 <div className="relative" aria-hidden="true">
-                  <div
-                    className={`absolute top-4 left-1/2 -translate-x-1/2 h-2 w-2 ${
-                      entry.present ? "bg-green" : "bg-dim"
-                    }`}
+                  <Circle
+                    className="absolute top-3.5 left-1/2 h-3 w-3 -translate-x-1/2"
                     style={{
-                      boxShadow: entry.present
-                        ? "0 0 0 2px var(--color-bg), 0 0 0 3px var(--color-green)"
-                        : "0 0 0 2px var(--color-bg), 0 0 0 3px var(--color-dim)",
+                      color: entry.present
+                        ? "var(--color-green)"
+                        : "var(--color-dim)",
+                      fill: entry.present
+                        ? "var(--color-green)"
+                        : "var(--color-dim)",
                     }}
                   />
                 </div>
@@ -59,10 +62,7 @@ export function ExperienceSection() {
                 <div className="border border-border bg-bg-2 p-[16px_18px] transition-colors hover:border-dim">
                   {entry.present && (
                     <div className="flex items-center gap-1.5 mb-2">
-                      <span className="relative flex h-1.5 w-1.5">
-                        <span className="absolute inline-flex h-full w-full animate-ping bg-green opacity-75" />
-                        <span className="relative inline-flex h-1.5 w-1.5 bg-green" />
-                      </span>
+                      <Radio className="h-3.5 w-3.5 text-green" aria-hidden="true" />
                       <span className="font-mono text-[9px] uppercase tracking-[0.08em] text-green">
                         Present
                       </span>
@@ -77,8 +77,15 @@ export function ExperienceSection() {
                     {entry.company}
                   </p>
 
-                  <p className="font-mono text-[10px] text-muted mt-1">
-                    {entry.period} &middot; {entry.location}
+                  <p className="mt-1 inline-flex flex-wrap items-center gap-2 font-mono text-[10px] text-muted">
+                    <span className="inline-flex items-center gap-1">
+                      <CalendarRange className="h-3 w-3" aria-hidden="true" />
+                      {entry.period}
+                    </span>
+                    <span className="inline-flex items-center gap-1">
+                      <MapPin className="h-3 w-3" aria-hidden="true" />
+                      {entry.location}
+                    </span>
                   </p>
 
                   <p className="font-sans text-[12px] leading-[1.7] mt-3 text-dim">

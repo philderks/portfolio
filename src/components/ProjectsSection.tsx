@@ -1,4 +1,5 @@
 import type { PinnedRepo } from "@/lib/github";
+import { ArrowUpRight, Circle, FolderKanban, Star } from "lucide-react";
 
 const accentColors = ["text-cyan", "text-green", "text-yellow", "text-red"];
 
@@ -21,7 +22,8 @@ export function ProjectsSection({ repos }: { repos: PinnedRepo[] }) {
       <div className="relative mx-auto max-w-6xl">
         <div className="flex items-baseline gap-3 border-b border-border pb-4 mb-12">
           <span className="font-mono text-[11px] text-cyan">03</span>
-          <span className="font-mono text-[8px] uppercase tracking-[0.18em] text-muted">
+          <span className="inline-flex items-center gap-1.5 font-mono text-[8px] uppercase tracking-[0.18em] text-muted">
+            <FolderKanban className="h-3 w-3" aria-hidden="true" />
             Projects
           </span>
         </div>
@@ -61,9 +63,12 @@ export function ProjectsSection({ repos }: { repos: PinnedRepo[] }) {
                   <div className="flex items-center gap-1.5">
                     {repo.primaryLanguage && (
                       <>
-                        <span
-                          className="inline-block h-2 w-2"
-                          style={{ backgroundColor: repo.primaryLanguage.color }}
+                        <Circle
+                          className="h-2.5 w-2.5"
+                          style={{
+                            color: repo.primaryLanguage.color,
+                            fill: repo.primaryLanguage.color,
+                          }}
                           aria-hidden="true"
                         />
                         <span>{repo.primaryLanguage.name}</span>
@@ -71,7 +76,10 @@ export function ProjectsSection({ repos }: { repos: PinnedRepo[] }) {
                     )}
                   </div>
                   {repo.stargazerCount > 0 && (
-                    <span>&#9733; {repo.stargazerCount}</span>
+                    <span className="inline-flex items-center gap-1">
+                      <Star className="h-3 w-3" aria-hidden="true" />
+                      {repo.stargazerCount}
+                    </span>
                   )}
                 </div>
 
@@ -95,7 +103,7 @@ export function ProjectsSection({ repos }: { repos: PinnedRepo[] }) {
                   aria-label={`${formatRepoName(repo.name)} on GitHub`}
                   className="absolute right-5 top-5 font-mono text-base font-bold leading-tight text-muted transition-colors group-hover:text-cyan"
                 >
-                  &#8599;
+                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
                 </a>
               </li>
             ))}

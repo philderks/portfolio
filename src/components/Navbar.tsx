@@ -1,13 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import type { LucideIcon } from "lucide-react";
+import { BriefcaseBusiness, FolderKanban, Mail, UserRound } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 
-const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" },
+const navLinks: { label: string; href: string; icon: LucideIcon }[] = [
+  { label: "About", href: "#about", icon: UserRound },
+  { label: "Experience", href: "#experience", icon: BriefcaseBusiness },
+  { label: "Projects", href: "#projects", icon: FolderKanban },
+  { label: "Contact", href: "#contact", icon: Mail },
 ];
 
 export function Navbar() {
@@ -41,8 +43,9 @@ export function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="font-mono text-[9px] uppercase tracking-wide text-muted transition-colors hover:text-fg sm:text-[10px] sm:tracking-widest"
+              className="inline-flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-wide text-muted transition-colors hover:text-fg sm:text-[10px] sm:tracking-widest"
             >
+              <link.icon className="h-3 w-3" aria-hidden="true" />
               {link.label}
             </a>
           ))}
