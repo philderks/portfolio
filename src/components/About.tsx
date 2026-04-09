@@ -1,3 +1,8 @@
+"use client";
+
+import { SplitFlapText } from "@/components/SplitFlapText";
+import type { Lang } from "@/lib/i18n";
+import { content } from "@/lib/i18n";
 import { UserRound } from "lucide-react";
 
 const primarySkills = [
@@ -17,7 +22,13 @@ const secondarySkills = [
   "Git",
 ];
 
-export function About() {
+export interface AboutProps {
+  lang: Lang;
+}
+
+export function About({ lang }: AboutProps) {
+  const t = content[lang].about;
+
   return (
     <section
       id="about"
@@ -28,29 +39,25 @@ export function About() {
           <span className="font-mono text-[11px] text-cyan">01</span>
           <span className="inline-flex items-center gap-1.5 font-mono text-[8px] uppercase tracking-[0.18em] text-muted">
             <UserRound className="h-3 w-3" aria-hidden="true" />
-            About
+            <SplitFlapText target={t.sectionLabel} lang={lang} />
           </span>
         </div>
 
         <div className="grid gap-16 md:grid-cols-2">
           <div>
             <h2 className="font-display text-3xl font-extrabold tracking-tight text-fg md:text-4xl">
-              Building software that
+              <SplitFlapText target={t.headingLine1} lang={lang} />
               <br />
-              actually works.
+              <SplitFlapText target={t.headingLine2} lang={lang} />
             </h2>
             <p className="mt-6 font-sans text-base leading-relaxed text-dim">
-              I&apos;m a software engineer with a focus on full-stack development
-              and distributed systems. I care about performance, clean
-              architecture, and shipping products that make a difference. When
-              I&apos;m not coding, you&apos;ll find me exercising at the gym
-              or configuring my homelab.
+              <SplitFlapText target={t.body} lang={lang} />
             </p>
           </div>
 
           <div>
             <p className="mb-4 font-mono text-[10px] uppercase tracking-widest text-muted">
-              Primary Stack
+              <SplitFlapText target={t.primaryStack} lang={lang} />
             </p>
             <div className="mb-8 flex flex-wrap gap-2">
               {primarySkills.map((skill) => (
@@ -64,7 +71,7 @@ export function About() {
             </div>
 
             <p className="mb-4 font-mono text-[10px] uppercase tracking-widest text-muted">
-              Tools &amp; Infrastructure
+              <SplitFlapText target={t.toolsInfra} lang={lang} />
             </p>
             <div className="flex flex-wrap gap-2">
               {secondarySkills.map((skill) => (

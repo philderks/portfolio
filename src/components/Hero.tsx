@@ -1,7 +1,12 @@
+"use client";
+
 import experienceData from "@/data/experience.json";
 import { socialProfileLinks } from "@/data/social-links";
+import { SplitFlapText } from "@/components/SplitFlapText";
 import { formatCareerTenure, type ExperienceEntry } from "@/lib/experience";
 import { ObfuscatedEmailLink } from "@/components/ObfuscatedEmailLink";
+import type { Lang } from "@/lib/i18n";
+import { content } from "@/lib/i18n";
 import {
   ArrowUpRight,
   Circle,
@@ -27,22 +32,25 @@ function SocialIcon({ icon }: { icon: "github" | "linkedin" }) {
   return <Link2 className="h-3.5 w-3.5" aria-hidden="true" />;
 }
 
-export function Hero() {
+export interface HeroProps {
+  lang: Lang;
+}
+
+export function Hero({ lang }: HeroProps) {
   const experienceLabel = formatCareerTenure(
     experienceData as ExperienceEntry[],
   );
+  const t = content[lang].hero;
 
   return (
     <section className="mx-auto max-w-6xl">
-      {/* Two-column hero */}
       <div className="grid min-h-[70vh] md:grid-cols-[1fr_200px] md:min-h-[72vh]">
-        {/* Left column */}
         <div className="flex flex-col justify-center border-b border-border px-8 py-16 md:border-b-0 md:border-r md:px-12 md:py-24">
           <div className="mb-6 flex items-center gap-3">
             <span className="block h-px w-4 bg-muted" />
             <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-widest text-muted">
               <MapPin className="h-3 w-3" aria-hidden="true" />
-              Zurich, Switzerland
+              <SplitFlapText target={t.label} lang={lang} />
             </span>
           </div>
 
@@ -50,33 +58,44 @@ export function Hero() {
             className="font-display leading-none tracking-normal"
             style={{ fontSize: "clamp(2.8rem, 8vw, 5rem)", fontWeight: 800 }}
           >
-            <span className="text-fg">PHILIPP</span>
+            <span className="text-fg">
+              <SplitFlapText target={t.nameLine1} lang={lang} />
+            </span>
             <br />
-            <span className="text-stroke-cyan">DERKS</span>
+            <span className="text-stroke-cyan">
+              <SplitFlapText target={t.nameLine2} lang={lang} />
+            </span>
           </h1>
 
-          <p className="mt-6 max-w-md font-sans text-[0.95rem] leading-relaxed text-dim">
-            Software engineer with a focus on full-stack development and
-            distributed systems. Working at <a href="https://www.ethz.ch" className="text-cyan">ETH Zürich</a>.
+          <p className="mt-4 max-w-md font-sans text-[0.95rem] font-medium leading-relaxed text-fg">
+            <SplitFlapText target={t.role} lang={lang} />
+          </p>
+
+          <p className="mt-3 max-w-md font-sans text-[0.95rem] leading-relaxed text-dim">
+            <SplitFlapText target={t.tagline.before} lang={lang} />
+            <a href="https://www.ethz.ch" className="text-cyan">
+              <SplitFlapText target={t.tagline.linkText} lang={lang} />
+            </a>
+            <SplitFlapText target={t.tagline.after} lang={lang} />
           </p>
 
           <div className="mt-8 flex items-center gap-3">
             <ObfuscatedEmailLink className="inline-flex items-center gap-1.5 bg-cyan px-5 py-2.5 font-mono text-[10px] font-bold uppercase tracking-widest text-[#0a0a0a]">
               <Mail className="h-3 w-3" aria-hidden="true" />
-              Get in touch
+              <SplitFlapText target={t.ctaPrimary} lang={lang} />
             </ObfuscatedEmailLink>
             <a
               href="#projects"
               className="inline-flex items-center gap-1.5 border border-border px-5 py-2.5 font-mono text-[10px] font-bold uppercase tracking-widest text-fg transition-colors hover:border-muted"
             >
               <FolderKanban className="h-3 w-3" aria-hidden="true" />
-              View work
+              <SplitFlapText target={t.ctaSecondary} lang={lang} />
             </a>
           </div>
 
           <nav
             className="mt-8 flex flex-wrap gap-x-6 gap-y-2"
-            aria-label="Social profiles"
+            aria-label={t.socialNavAria}
           >
             {socialProfileLinks.map((link) => (
               <a
@@ -95,12 +114,10 @@ export function Hero() {
           </nav>
         </div>
 
-        {/* Right sidebar */}
         <div className="hidden flex-col border-b border-border md:flex">
-          {/* Stack block */}
           <div className="border-b border-border p-4">
             <span className="mb-3 block font-mono text-[8px] uppercase tracking-[0.2em] text-muted">
-              Stack
+              <SplitFlapText target={t.sidebarStack} lang={lang} />
             </span>
             <div className="space-y-2">
               {stackItems.map((item) => (
@@ -116,23 +133,21 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Experience block */}
           <div className="border-b border-border p-4">
             <span className="mb-2 block font-mono text-[8px] uppercase tracking-[0.2em] text-muted">
-              Experience
+              <SplitFlapText target={t.sidebarExperience} lang={lang} />
             </span>
             <span className="font-mono text-[13px] font-bold text-fg">
               {experienceLabel}
             </span>
           </div>
 
-          {/* Focus block */}
           <div className="p-4">
             <span className="mb-2 block font-mono text-[8px] uppercase tracking-[0.2em] text-muted">
-              Focus
+              <SplitFlapText target={t.sidebarFocus} lang={lang} />
             </span>
             <span className="font-mono text-[13px] font-bold leading-snug text-fg">
-              Full-stack · Distributed systems
+              <SplitFlapText target={t.focusLine} lang={lang} />
             </span>
           </div>
         </div>

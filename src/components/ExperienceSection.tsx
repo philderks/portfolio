@@ -1,14 +1,24 @@
+"use client";
+
 import experienceData from "@/data/experience.json";
+import { SplitFlapText } from "@/components/SplitFlapText";
 import { startYear, type ExperienceEntry } from "@/lib/experience";
+import type { Lang } from "@/lib/i18n";
+import { content } from "@/lib/i18n";
 import { BriefcaseBusiness, CalendarRange, Circle, MapPin, Radio } from "lucide-react";
 
-export function ExperienceSection() {
+export interface ExperienceSectionProps {
+  lang: Lang;
+}
+
+export function ExperienceSection({ lang }: ExperienceSectionProps) {
   const data = experienceData as ExperienceEntry[];
+  const t = content[lang].experience;
 
   return (
     <section
       id="experience"
-      aria-label="Experience"
+      aria-label={t.sectionAria}
       className="relative scroll-mt-20 border-t border-border px-6 py-24 overflow-hidden"
     >
       <div className="relative mx-auto max-w-6xl">
@@ -16,7 +26,7 @@ export function ExperienceSection() {
           <span className="font-mono text-[11px] text-cyan">02</span>
           <span className="inline-flex items-center gap-1.5 font-mono text-[8px] uppercase tracking-[0.18em] text-muted">
             <BriefcaseBusiness className="h-3 w-3" aria-hidden="true" />
-            Experience
+            <SplitFlapText target={t.sectionLabel} lang={lang} />
           </span>
         </div>
 
@@ -41,7 +51,11 @@ export function ExperienceSection() {
                     {startYear(entry.start)}
                   </div>
                   <div className="font-mono text-[10px] uppercase text-muted mt-1">
-                    {entry.present ? "Now" : ""}
+                    {entry.present ? (
+                      <SplitFlapText target={t.now} lang={lang} />
+                    ) : (
+                      ""
+                    )}
                   </div>
                 </div>
 
@@ -64,7 +78,7 @@ export function ExperienceSection() {
                     <div className="flex items-center gap-1.5 mb-2">
                       <Radio className="h-3.5 w-3.5 text-green" aria-hidden="true" />
                       <span className="font-mono text-[9px] uppercase tracking-[0.08em] text-green">
-                        Present
+                        <SplitFlapText target={t.present} lang={lang} />
                       </span>
                     </div>
                   )}

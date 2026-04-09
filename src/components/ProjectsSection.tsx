@@ -1,4 +1,9 @@
+"use client";
+
 import type { PinnedRepo } from "@/lib/github";
+import { SplitFlapText } from "@/components/SplitFlapText";
+import type { Lang } from "@/lib/i18n";
+import { content } from "@/lib/i18n";
 import { ArrowUpRight, Circle, FolderKanban, Star } from "lucide-react";
 
 const accentColors = ["text-cyan", "text-green", "text-yellow", "text-red"];
@@ -10,13 +15,19 @@ function formatRepoName(name: string): string {
     .join(" ");
 }
 
-export function ProjectsSection({ repos }: { repos: PinnedRepo[] }) {
+export interface ProjectsSectionProps {
+  repos: PinnedRepo[];
+  lang: Lang;
+}
+
+export function ProjectsSection({ repos, lang }: ProjectsSectionProps) {
   const showComingSoon = repos.length <= 5;
+  const t = content[lang].projects;
 
   return (
     <section
       id="projects"
-      aria-label="Projects"
+      aria-label={t.sectionAria}
       className="relative scroll-mt-20 border-t border-border px-6 py-24 overflow-hidden"
     >
       <div className="relative mx-auto max-w-6xl">
@@ -24,14 +35,14 @@ export function ProjectsSection({ repos }: { repos: PinnedRepo[] }) {
           <span className="font-mono text-[11px] text-cyan">03</span>
           <span className="inline-flex items-center gap-1.5 font-mono text-[8px] uppercase tracking-[0.18em] text-muted">
             <FolderKanban className="h-3 w-3" aria-hidden="true" />
-            Projects
+            <SplitFlapText target={t.sectionLabel} lang={lang} />
           </span>
         </div>
 
         {repos.length === 0 ? (
           <div className="border border-border p-5">
             <p className="font-mono text-sm text-muted">
-              No pinned repositories found.
+              <SplitFlapText target={t.empty} lang={lang} />
             </p>
           </div>
         ) : (
@@ -100,7 +111,7 @@ export function ProjectsSection({ repos }: { repos: PinnedRepo[] }) {
                   href={repo.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={`${formatRepoName(repo.name)} on GitHub`}
+                  aria-label={`${formatRepoName(repo.name)} ${t.githubSuffix}`}
                   className="absolute right-5 top-5 font-mono text-base font-bold leading-tight text-muted transition-colors group-hover:text-cyan"
                 >
                   <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
@@ -114,10 +125,10 @@ export function ProjectsSection({ repos }: { repos: PinnedRepo[] }) {
                   {String(repos.length + 1).padStart(2, "0")}
                 </span>
                 <p className="mt-3 font-display text-lg font-bold text-fg">
-                  Coming Soon
+                  <SplitFlapText target={t.comingSoonTitle} lang={lang} />
                 </p>
                 <p className="mt-1 font-sans text-sm text-dim">
-                  More projects on the way
+                  <SplitFlapText target={t.comingSoonSubtitle} lang={lang} />
                 </p>
               </li>
             )}
