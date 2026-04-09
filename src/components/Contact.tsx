@@ -15,13 +15,13 @@ export function Contact() {
 
         <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-8">
           <a
-            href="mailto:hello@derks.dev"
+            href="mailto:philipp@derks.dev"
             className="text-base text-text underline decoration-accent underline-offset-4 transition-colors hover:text-accent"
           >
-            hello@derks.dev
+            philipp@derks.dev
           </a>
           <a
-            href="https://github.com"
+            href="https://github.com/philippderks"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-muted transition-colors hover:text-text"

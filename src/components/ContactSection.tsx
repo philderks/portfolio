@@ -4,8 +4,8 @@ import Link from "next/link";
 const links = [
   ...socialProfileLinks.map((link) => ({ ...link, external: true as const })),
   {
-    label: "hello@derks.dev",
-    href: "mailto:hello@derks.dev",
+    label: "philipp@derks.dev",
+    href: "mailto:philipp@derks.dev",
     ariaLabel: "Send email",
     external: false as const,
   },
