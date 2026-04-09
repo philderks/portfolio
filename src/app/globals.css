@@ -4,18 +4,18 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --color-cyan:   #0aaba0;
-  --color-green:  #07a35c;
-  --color-yellow: #b89500;
-  --color-red:    #d10710;
-  --color-bg:     #fafafa;
-  --color-bg-2:   #f0f0f0;
-  --color-bg-3:   #e8e8e8;
-  --color-border: #e0e0e0;
-  --color-fg:     #0a0a0a;
-  --color-muted:  #999999;
-  --color-dim:    #666666;
-  --color-grid:   rgba(10, 171, 160, 0.06);
+  --color-cyan:   #0a9e94;
+  --color-green:  #069651;
+  --color-yellow: #a88a00;
+  --color-red:    #c1060e;
+  --color-bg:     #e8e8e4;
+  --color-bg-2:   #ddddd9;
+  --color-bg-3:   #d2d2ce;
+  --color-border: #c6c6c2;
+  --color-fg:     #1a1a1a;
+  --color-muted:  #7a7a76;
+  --color-dim:    #58584f;
+  --color-grid:   rgba(10, 158, 148, 0.07);
 }
 
 .dark {
@@ -69,6 +69,8 @@ body {
 
 * {
   border-color: var(--color-border);
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-bg-3) transparent;
 }
 
 .text-stroke-cyan {
@@ -79,6 +81,34 @@ body {
 .rainbow-line {
   height: 1px;
   background: linear-gradient(90deg, #84f1e8, #2bf085, #f7ce0f, #f8080b);
+}
+
+/* ── Custom scrollbar (Webkit) ── */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-bg-3);
+  border: 1px solid var(--color-border);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-cyan);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(180deg, #84f1e8, #2bf085, #f7ce0f, #f8080b);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
 }
 
 .noise-overlay {
