@@ -55,17 +55,31 @@ export function Hero({ lang }: HeroProps) {
           </div>
 
           <h1
-            className="font-display leading-none tracking-normal"
-            style={{ fontSize: "clamp(2.8rem, 8vw, 5rem)", fontWeight: 800 }}
+            className="uppercase"
+            style={{
+              fontFamily: '"Big Shoulders Display", sans-serif',
+              fontWeight: 900,
+              letterSpacing: "-0.01em",
+              lineHeight: 0.9,
+            }}
           >
-            <span className="text-fg">
+            <span className="block text-[96px] text-[#e8e0d5]">
               <SplitFlapText target={t.nameLine1} lang={lang} />
             </span>
-            <br />
-            <span className="text-stroke-cyan">
+            <span className="mt-2 block text-[48px] text-[#666666]">
               <SplitFlapText target={t.nameLine2} lang={lang} />
             </span>
           </h1>
+
+          <div
+            className="mt-4 flex gap-1"
+            aria-hidden="true"
+          >
+            <span className="h-[3px] w-12 shrink-0 bg-[#84f1e8]" />
+            <span className="h-[3px] w-12 shrink-0 bg-[#2bf085]" />
+            <span className="h-[3px] w-12 shrink-0 bg-[#f7ce0f]" />
+            <span className="h-[3px] w-12 shrink-0 bg-[#f8080b]" />
+          </div>
 
           <p className="mt-4 max-w-md font-sans text-[0.95rem] font-medium leading-relaxed text-fg">
             <SplitFlapText target={t.role} lang={lang} />
