@@ -27,10 +27,7 @@ export function SplitFlapText({
       return [<br key={`${lang}-${i}-br`} />];
     }
     return [
-      <span
-        key={`${lang}-${i}`}
-        className={item.scrambling ? "text-[#f97316]" : undefined}
-      >
+      <span key={`${lang}-${i}`}>
         {item.char}
       </span>,
     ];
