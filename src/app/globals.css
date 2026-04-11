@@ -62,10 +62,33 @@
   --radius-full: 0px;
 }
 
+html {
+  background-color: var(--color-bg);
+}
+
 body {
   background-color: var(--color-bg);
   color: var(--color-fg);
   font-family: var(--font-dm-sans), sans-serif;
+}
+
+/* Smooth light ↔ dark theme cross-fade (respect reduced motion) */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    transition: background-color 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  body {
+    transition: background-color 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+      color 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  :where(*, *::before, *::after) {
+    transition-property: background-color, border-color, color, fill, stroke,
+      text-decoration-color, outline-color, box-shadow, -webkit-text-fill-color;
+    transition-duration: 0.38s;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
 }
 
 * {
