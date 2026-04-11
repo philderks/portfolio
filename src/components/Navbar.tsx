@@ -3,16 +3,29 @@
 import { useEffect, useState } from "react";
 import type { LucideIcon } from "lucide-react";
 import { BriefcaseBusiness, FolderKanban, Mail, UserRound } from "lucide-react";
+import type { Content, Lang } from "@/lib/i18n";
+import { LangToggle } from "./LangToggle";
 import { ThemeToggle } from "./ThemeToggle";
+import { SplitFlapText } from "./SplitFlapText";
 
-const navLinks: { label: string; href: string; icon: LucideIcon }[] = [
-  { label: "About", href: "#about", icon: UserRound },
-  { label: "Experience", href: "#experience", icon: BriefcaseBusiness },
-  { label: "Projects", href: "#projects", icon: FolderKanban },
-  { label: "Contact", href: "#contact", icon: Mail },
+const navDefs: readonly {
+  labelKey: keyof Content["nav"];
+  href: string;
+  icon: LucideIcon;
+}[] = [
+  { labelKey: "about", href: "#about", icon: UserRound },
+  { labelKey: "experience", href: "#experience", icon: BriefcaseBusiness },
+  { labelKey: "projects", href: "#projects", icon: FolderKanban },
+  { labelKey: "contact", href: "#contact", icon: Mail },
 ];
 
-export function Navbar() {
+export interface NavbarProps {
+  lang: Lang;
+  onLangChange: (next: Lang) => void;
+  nav: Content["nav"];
+}
+
+export function Navbar({ lang, onLangChange, nav }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -39,16 +52,17 @@ export function Navbar() {
           className="flex max-w-full flex-wrap items-center justify-end gap-x-2.5 gap-y-1 sm:gap-x-6 sm:gap-y-0"
           aria-label="Page sections"
         >
-          {navLinks.map((link) => (
+          {navDefs.map((link) => (
             <a
               key={link.href}
               href={link.href}
               className="inline-flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-wide text-muted transition-colors hover:text-fg sm:text-[10px] sm:tracking-widest"
             >
               <link.icon className="h-3 w-3" aria-hidden="true" />
-              {link.label}
+              <SplitFlapText target={nav[link.labelKey]} lang={lang} />
             </a>
           ))}
+          <LangToggle lang={lang} onToggle={onLangChange} />
         </nav>
         <ThemeToggle />
       </div>
