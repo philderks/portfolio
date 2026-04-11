@@ -16,6 +16,7 @@
   --color-muted:  #7a7a76;
   --color-dim:    #58584f;
   --color-grid:   rgba(10, 158, 148, 0.07);
+  --font-press-start: "Press Start 2P", monospace;
 }
 
 .dark {
@@ -80,7 +81,13 @@ body {
 
 .rainbow-line {
   height: 1px;
-  background: linear-gradient(90deg, #84f1e8, #2bf085, #f7ce0f, #f8080b);
+  background: linear-gradient(
+    90deg,
+    var(--color-cyan),
+    var(--color-green),
+    var(--color-yellow),
+    var(--color-red)
+  );
 }
 
 /* ── Custom scrollbar (Webkit) ── */
@@ -104,7 +111,13 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:active {
-  background: linear-gradient(180deg, #84f1e8, #2bf085, #f7ce0f, #f8080b);
+  background: linear-gradient(
+    180deg,
+    var(--color-cyan),
+    var(--color-green),
+    var(--color-yellow),
+    var(--color-red)
+  );
 }
 
 ::-webkit-scrollbar-corner {
@@ -119,4 +132,68 @@ body {
   opacity: 0.035;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-repeat: repeat;
+}
+
+/* ── InsertCoinScreen overlay ── */
+
+.insert-coin-overlay {
+  isolation: isolate;
+}
+
+.insert-coin-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.15;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 3px,
+    rgba(0, 0, 0, 0.45) 3px,
+    rgba(0, 0, 0, 0.45) 4px
+  );
+}
+
+.insert-coin-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 45%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
+}
+
+.insert-coin-overlay > * {
+  position: relative;
+  z-index: 1;
+}
+
+.insert-coin-arcade-text {
+  font-family: var(--font-press-start);
+}
+
+.insert-coin-overlay--fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.insert-coin-hint {
+  animation: insert-coin-hint-blink 1s step-start infinite;
+}
+
+@keyframes insert-coin-hint-blink {
+  0%,
+  49.99% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0.25;
+  }
 }

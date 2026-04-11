@@ -3,8 +3,7 @@
 import { socialProfileLinks } from "@/data/social-links";
 import { SplitFlapText } from "@/components/SplitFlapText";
 import { ObfuscatedEmailLink } from "@/components/ObfuscatedEmailLink";
-import type { Lang } from "@/lib/i18n";
-import { content } from "@/lib/i18n";
+import { content, type Lang } from "@/lib/i18n";
 import Link from "next/link";
 import { ArrowUpRight, GitBranch, Link2, Mail } from "lucide-react";
 
@@ -37,7 +36,7 @@ export function ContactSection({ lang }: ContactSectionProps) {
       <div className="relative mx-auto max-w-6xl px-6 py-16">
         <div className="flex items-baseline gap-3 border-b border-border pb-4 mb-8">
           <span className="font-mono text-[15px] text-cyan">04</span>
-          <span className="inline-flex items-center gap-1.5 font-mono text-[8px] uppercase tracking-[0.18em] text-muted">
+          <span className="inline-flex items-center gap-1.5 font-mono text-[15px] uppercase tracking-[0.18em] text-muted">
             <Mail className="h-3 w-3" aria-hidden="true" />
             <SplitFlapText target={t.sectionLabel} lang={lang} />
           </span>
@@ -88,15 +87,15 @@ export function ContactSection({ lang }: ContactSectionProps) {
             </span>
             <div className="flex items-center gap-3">
               <Link href="/impressum" className="font-mono text-[9px] uppercase tracking-widest text-muted hover:text-fg">
-                Impressum
+                {t.footerImpressum}
               </Link>
               <Link href="/datenschutz" className="font-mono text-[9px] uppercase tracking-widest text-muted hover:text-fg">
-                Datenschutz
+                {t.footerPrivacy}
               </Link>
             </div>
           </div>
           <span className="font-mono text-[9px] text-muted">
-            <SplitFlapText target={t.footerMeta} lang={lang} />
+            {content.en.contact.footerMeta}
           </span>
         </div>
       </div>

@@ -63,10 +63,10 @@ export function Hero({ lang }: HeroProps) {
               lineHeight: 0.9,
             }}
           >
-            <span className="block text-[96px] text-[#e8e0d5]">
+            <span className="block text-[96px] text-fg">
               <SplitFlapText target={t.nameLine1} lang={lang} />
             </span>
-            <span className="mt-2 block text-[48px] text-[#666666]">
+            <span className="mt-2 block text-[48px] text-muted">
               <SplitFlapText target={t.nameLine2} lang={lang} />
             </span>
           </h1>
@@ -75,10 +75,10 @@ export function Hero({ lang }: HeroProps) {
             className="mt-4 flex gap-1"
             aria-hidden="true"
           >
-            <span className="h-[3px] w-12 shrink-0 bg-[#84f1e8]" />
-            <span className="h-[3px] w-12 shrink-0 bg-[#2bf085]" />
-            <span className="h-[3px] w-12 shrink-0 bg-[#f7ce0f]" />
-            <span className="h-[3px] w-12 shrink-0 bg-[#f8080b]" />
+            <span className="h-[3px] w-12 shrink-0 bg-cyan" />
+            <span className="h-[3px] w-12 shrink-0 bg-green" />
+            <span className="h-[3px] w-12 shrink-0 bg-yellow" />
+            <span className="h-[3px] w-12 shrink-0 bg-red" />
           </div>
 
           <p className="mt-4 max-w-md font-sans text-[0.95rem] font-medium leading-relaxed text-fg">
@@ -94,7 +94,7 @@ export function Hero({ lang }: HeroProps) {
           </p>
 
           <div className="mt-8 flex items-center gap-3">
-            <ObfuscatedEmailLink className="inline-flex items-center gap-1.5 bg-cyan px-5 py-2.5 font-mono text-[10px] font-bold uppercase tracking-widest text-[#0a0a0a]">
+            <ObfuscatedEmailLink className="inline-flex items-center gap-1.5 bg-cyan px-5 py-2.5 font-mono text-[10px] font-bold uppercase tracking-widest text-white dark:text-[#0a0a0a]">
               <Mail className="h-3 w-3" aria-hidden="true" />
               <SplitFlapText target={t.ctaPrimary} lang={lang} />
             </ObfuscatedEmailLink>

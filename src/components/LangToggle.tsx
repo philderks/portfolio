@@ -19,7 +19,7 @@ export function LangToggle({ lang, onToggle }: LangToggleProps) {
         onClick={() => onToggle("en")}
         className={`px-2 py-1 font-mono text-[12px] tracking-[0.08em] transition-colors ${
           lang === "en"
-            ? "bg-[#f97316] text-white"
+            ? "bg-red text-fg"
             : "bg-transparent text-muted hover:bg-bg-2"
         }`}
         aria-pressed={lang === "en"}
@@ -31,7 +31,7 @@ export function LangToggle({ lang, onToggle }: LangToggleProps) {
         onClick={() => onToggle("de")}
         className={`border-l border-border px-2 py-1 font-mono text-[12px] tracking-[0.08em] transition-colors ${
           lang === "de"
-            ? "bg-[#f97316] text-white"
+            ? "bg-red text-fg"
             : "bg-transparent text-muted hover:bg-bg-2"
         }`}
         aria-pressed={lang === "de"}

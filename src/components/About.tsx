@@ -36,7 +36,7 @@ export function About({ lang }: AboutProps) {
     >
       <div className="mx-auto max-w-6xl">
         <div className="flex items-baseline gap-3 border-b border-border pb-4 mb-12">
-          <span className="font-mono text-[11px] text-cyan">01</span>
+          <span className="font-mono text-[15px] text-cyan">01</span>
           <span className="inline-flex items-center gap-1.5 font-mono text-[15px] uppercase tracking-[0.18em] text-muted">
             <UserRound className="h-3 w-3" aria-hidden="true" />
             <SplitFlapText target={t.sectionLabel} lang={lang} />

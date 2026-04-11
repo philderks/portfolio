@@ -5,17 +5,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        cyan: "#84f1e8",
-        green: "#2bf085",
-        yellow: "#f7ce0f",
-        red: "#f8080b",
-        bg: "#0a0a0a",
-        "bg-2": "#0f0f0f",
-        "bg-3": "#161616",
-        border: "#1e1e1e",
-        fg: "#f0f0f0",
-        muted: "#383838",
-        dim: "#555555",
+        cyan: "var(--color-cyan)",
+        green: "var(--color-green)",
+        yellow: "var(--color-yellow)",
+        red: "var(--color-red)",
+        bg: "var(--color-bg)",
+        "bg-2": "var(--color-bg-2)",
+        "bg-3": "var(--color-bg-3)",
+        border: "var(--color-border)",
+        fg: "var(--color-fg)",
+        muted: "var(--color-muted)",
+        dim: "var(--color-dim)",
       },
       borderRadius: {
         DEFAULT: "0",

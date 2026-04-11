@@ -33,7 +33,7 @@ export function ProjectsSection({ repos, lang }: ProjectsSectionProps) {
       <div className="relative mx-auto max-w-6xl">
         <div className="flex items-baseline gap-3 border-b border-border pb-4 mb-12">
           <span className="font-mono text-[15px] text-cyan">03</span>
-          <span className="inline-flex items-center gap-1.5 font-mono text-[8px] uppercase tracking-[0.18em] text-muted">
+          <span className="inline-flex items-center gap-1.5 font-mono text-[15px] uppercase tracking-[0.18em] text-muted">
             <FolderKanban className="h-3 w-3" aria-hidden="true" />
             <SplitFlapText target={t.sectionLabel} lang={lang} />
           </span>
