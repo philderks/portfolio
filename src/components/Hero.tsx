@@ -43,7 +43,7 @@ export function Hero({ lang }: HeroProps) {
   const t = content[lang].hero;
 
   return (
-    <section className="mx-auto max-w-6xl">
+    <section className="relative z-[1] mx-auto max-w-6xl">
       <div className="grid min-h-[70vh] md:grid-cols-[1fr_200px] md:min-h-[72vh]">
         <div className="flex flex-col justify-center border-b border-border px-8 py-16 md:border-b-0 md:border-r md:px-12 md:py-24">
           <div className="mb-6 flex items-center gap-3">

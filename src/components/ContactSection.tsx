@@ -31,9 +31,9 @@ export function ContactSection({ lang }: ContactSectionProps) {
     <footer
       id="contact"
       aria-label={t.sectionAria}
-      className="relative border-t border-border overflow-hidden scroll-mt-20"
+      className="relative border-t border-border overflow-hidden scroll-mt-20 px-6"
     >
-      <div className="relative mx-auto max-w-6xl px-6 py-16">
+      <div className="relative mx-auto max-w-6xl py-16">
         <div className="flex items-baseline gap-3 border-b border-border pb-4 mb-8">
           <span className="font-mono text-[15px] text-cyan">04</span>
           <span className="inline-flex items-center gap-1.5 font-mono text-[15px] uppercase tracking-[0.18em] text-muted">
@@ -78,7 +78,7 @@ export function ContactSection({ lang }: ContactSectionProps) {
         </div>
       </div>
 
-      <div className="border-t border-border px-6 py-5">
+      <div className="border-t border-border py-5">
         <div className="mx-auto flex max-w-6xl flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-4">
             <span className="font-mono text-[9px] uppercase tracking-widest text-muted">
