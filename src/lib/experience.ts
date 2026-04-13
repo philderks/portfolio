@@ -35,10 +35,20 @@ export function careerCompletedYears(
   return Math.max(0, completedYearsBetween(earliest, asOf));
 }
 
-export function formatCareerTenure(entries: ExperienceEntry[], asOf?: Date): string {
+const tenureLabels = {
+  en: { lessThanOne: "< 1 year", suffix: "years" },
+  de: { lessThanOne: "< 1 Jahr", suffix: "Jahre" },
+} as const;
+
+export function formatCareerTenure(
+  entries: ExperienceEntry[],
+  lang: "en" | "de" = "en",
+  asOf?: Date,
+): string {
   const years = careerCompletedYears(entries, asOf);
-  if (years < 1) return "< 1 year";
-  return `${years}+ years`;
+  const labels = tenureLabels[lang];
+  if (years < 1) return labels.lessThanOne;
+  return `${years}+ ${labels.suffix}`;
 }
 
 export function startYear(isoDate: string): string {

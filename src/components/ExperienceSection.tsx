@@ -1,8 +1,8 @@
 "use client";
 
-import experienceData from "@/data/experience.json";
+import { experienceData } from "@/data/experience-data";
 import { SplitFlapText } from "@/components/SplitFlapText";
-import { startYear, type ExperienceEntry } from "@/lib/experience";
+import { startYear } from "@/lib/experience";
 import type { Lang } from "@/lib/i18n";
 import { content } from "@/lib/i18n";
 import { BriefcaseBusiness, CalendarRange, Circle, MapPin, Radio } from "lucide-react";
@@ -12,7 +12,7 @@ export interface ExperienceSectionProps {
 }
 
 export function ExperienceSection({ lang }: ExperienceSectionProps) {
-  const data = experienceData as ExperienceEntry[];
+  const data = experienceData[lang];
   const t = content[lang].experience;
 
   return (
@@ -84,7 +84,7 @@ export function ExperienceSection({ lang }: ExperienceSectionProps) {
                   )}
 
                   <h3 className="font-sans text-[14px] font-medium text-fg leading-snug">
-                    {entry.role}
+                    <SplitFlapText target={entry.role} lang={lang} />
                   </h3>
 
                   <p className="font-mono text-[11px] text-cyan mt-1">
@@ -94,16 +94,16 @@ export function ExperienceSection({ lang }: ExperienceSectionProps) {
                   <p className="mt-1 inline-flex flex-wrap items-center gap-2 font-mono text-[10px] text-muted">
                     <span className="inline-flex items-center gap-1">
                       <CalendarRange className="h-3 w-3" aria-hidden="true" />
-                      {entry.period}
+                      <SplitFlapText target={entry.period} lang={lang} />
                     </span>
                     <span className="inline-flex items-center gap-1">
                       <MapPin className="h-3 w-3" aria-hidden="true" />
-                      {entry.location}
+                      <SplitFlapText target={entry.location} lang={lang} />
                     </span>
                   </p>
 
                   <p className="font-sans text-[12px] leading-[1.7] mt-3 text-dim">
-                    {entry.description}
+                    <SplitFlapText target={entry.description} lang={lang} />
                   </p>
 
                   <div className="flex flex-wrap gap-2 mt-3">
