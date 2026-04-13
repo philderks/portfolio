@@ -2,7 +2,7 @@
 
 import { useTheme } from "next-themes";
 import { Moon, Sun } from "lucide-react";
-import { useSyncExternalStore } from "react";
+import { useCallback, useSyncExternalStore } from "react";
 
 const emptySubscribe = () => () => {};
 
@@ -14,9 +14,63 @@ function useIsMounted() {
   );
 }
 
+function supportsViewTransition(): boolean {
+  return (
+    typeof document !== "undefined" &&
+    "startViewTransition" in document &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
+}
+
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
   const mounted = useIsMounted();
+
+  const toggle = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      const next = theme === "dark" ? "light" : "dark";
+
+      if (!supportsViewTransition()) {
+        setTheme(next);
+        return;
+      }
+
+      const { clientX: x, clientY: y } = e;
+      const endRadius = Math.hypot(
+        Math.max(x, window.innerWidth - x),
+        Math.max(y, window.innerHeight - y),
+      );
+
+      const transition = (
+        document as unknown as { startViewTransition: (cb: () => void) => ViewTransition }
+      ).startViewTransition(() => {
+        document.documentElement.classList.toggle("dark", next === "dark");
+        document.documentElement.style.colorScheme = next;
+      });
+
+      transition.ready.then(() => {
+        document.documentElement.animate(
+          {
+            clipPath: [
+              `circle(0px at ${x}px ${y}px)`,
+              `circle(${endRadius}px at ${x}px ${y}px)`,
+            ],
+          },
+          {
+            duration: 500,
+            easing: "ease-in-out",
+            pseudoElement: "::view-transition-new(root)",
+            fill: "forwards",
+          },
+        );
+      });
+
+      transition.finished.then(() => {
+        setTheme(next);
+      });
+    },
+    [theme, setTheme],
+  );
 
   if (!mounted) {
     return <button className="h-8 w-8" aria-label="Toggle theme" />;
@@ -24,7 +78,7 @@ export function ThemeToggle() {
 
   return (
     <button
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      onClick={toggle}
       className="flex h-8 w-8 items-center justify-center border border-border text-dim transition-colors hover:text-fg hover:border-dim"
       aria-label="Toggle theme"
     >
@@ -35,4 +89,10 @@ export function ThemeToggle() {
       )}
     </button>
   );
+}
+
+interface ViewTransition {
+  ready: Promise<void>;
+  finished: Promise<void>;
+  updateCallbackDone: Promise<void>;
 }

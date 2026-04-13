@@ -72,22 +72,32 @@ body {
   font-family: var(--font-dm-sans), sans-serif;
 }
 
-/* Smooth light ↔ dark theme cross-fade (respect reduced motion) */
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    transition: background-color 0.38s cubic-bezier(0.22, 1, 0.36, 1);
-  }
+/* ── Circular-reveal theme transition (View Transitions API) ──
+   New layer starts fully clipped (invisible) via CSS so there is
+   zero flash even if the JS animation starts a frame late.
+   Old layer sits behind, fully visible until the new circle covers it. */
 
-  body {
-    transition: background-color 0.38s cubic-bezier(0.22, 1, 0.36, 1),
-      color 0.38s cubic-bezier(0.22, 1, 0.36, 1);
-  }
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
 
-  :where(*, *::before, *::after) {
-    transition-property: background-color, border-color, color, fill, stroke,
-      text-decoration-color, outline-color, box-shadow, -webkit-text-fill-color;
-    transition-duration: 0.38s;
-    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 9999;
+  clip-path: circle(0% at 50% 50%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
+    transition: none !important;
+    clip-path: none !important;
   }
 }
 
