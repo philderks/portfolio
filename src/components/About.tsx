@@ -8,7 +8,6 @@ import { UserRound } from "lucide-react";
 const primarySkills = [
   "Vue.js",
   "React",
-  "Next.js",
   "Node.js",
   "Python",
   "MySQL",
