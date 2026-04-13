@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Syne, Space_Mono, DM_Sans } from "next/font/google";
-import { InsertCoinScreenGate } from "@/components/InsertCoinScreenGate";
+import { InsertCoinGate } from "@/components/InsertCoinGate";
 import { Providers } from "@/components/Providers";
 import "./globals.css";
 
@@ -59,11 +59,12 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <InsertCoinScreenGate />
         <Providers>
-          <div className="rainbow-line" />
-          <div className="noise-overlay" aria-hidden="true" />
-          <div className="relative z-10">{children}</div>
+          <InsertCoinGate>
+            <div className="rainbow-line" />
+            <div className="noise-overlay" aria-hidden="true" />
+            {children}
+          </InsertCoinGate>
         </Providers>
       </body>
     </html>

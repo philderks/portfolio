@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
-const STORAGE_KEY = "derks.dev.insert-coin.dismissed";
+export const INSERT_COIN_STORAGE_KEY = "derks.dev.insert-coin.dismissed";
 const AUTO_DISMISS_MS = 3000;
 const GAME_START_PAUSE_MS = 700;
 const FADE_OUT_MS = 500;
@@ -10,13 +10,12 @@ const FADE_OUT_MS = 500;
 type TimerId = Parameters<typeof clearTimeout>[0];
 type Phase = "coin" | "gameStart" | "fadeOut";
 
-function readShouldShow(): boolean {
-  if (typeof window === "undefined") return false;
-  return sessionStorage.getItem(STORAGE_KEY) !== "1";
-}
-
-export default function InsertCoinScreen() {
-  const [shouldRender, setShouldRender] = useState(readShouldShow);
+export default function InsertCoinScreen({
+  onDismissed,
+}: {
+  onDismissed?: () => void;
+} = {}) {
+  const [shouldRender, setShouldRender] = useState(true);
   const [phase, setPhase] = useState<Phase>("coin");
 
   const dismissStarted = useRef(false);
@@ -30,12 +29,13 @@ export default function InsertCoinScreen() {
 
   const finishDismiss = useCallback(() => {
     setShouldRender(false);
-  }, []);
+    onDismissed?.();
+  }, [onDismissed]);
 
   const startDismiss = useCallback(() => {
     if (dismissStarted.current) return;
     dismissStarted.current = true;
-    sessionStorage.setItem(STORAGE_KEY, "1");
+    sessionStorage.setItem(INSERT_COIN_STORAGE_KEY, "1");
     if (autoTimerRef.current) {
       clearTimeout(autoTimerRef.current);
       autoTimerRef.current = null;
