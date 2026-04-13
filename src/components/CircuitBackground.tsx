@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 
 const GRID = 32;
 const SPEED = 40;
@@ -60,26 +60,27 @@ function initTrace(w: number, h: number, colors: string[]): Trace {
   let x: number, y: number;
   let dirs: number[];
 
+  // Enter on a diagonal; each turn is ±45° (one step on the 8-way compass).
   switch (edge) {
     case 0: // top
       x = snapToGrid(Math.random() * w);
       y = -GRID;
-      dirs = [6, 7, 5];
+      dirs = [7, 5];
       break;
     case 1: // bottom
       x = snapToGrid(Math.random() * w);
       y = (Math.floor(h / GRID) + 1) * GRID;
-      dirs = [2, 1, 3];
+      dirs = [1, 3];
       break;
     case 2: // left
       x = -GRID;
       y = snapToGrid(Math.random() * h);
-      dirs = [0, 1, 7];
+      dirs = [1, 7];
       break;
     default: // right
       x = (Math.floor(w / GRID) + 1) * GRID;
       y = snapToGrid(Math.random() * h);
-      dirs = [4, 3, 5];
+      dirs = [3, 5];
       break;
   }
 
@@ -107,16 +108,10 @@ function isOutsideBounds(p: Point, w: number, h: number): boolean {
 function tryTurn(trace: Trace): void {
   if (trace.segmentsLeft > 0) return;
 
-  const candidates: number[] = [];
-  for (const delta of [-1, 1]) {
-    const nd = ((trace.dir + delta) % 8 + 8) % 8;
-    if (isDiagonal(trace.dir) && isDiagonal(nd)) continue;
-    candidates.push(nd);
-  }
-
-  if (candidates.length > 0) {
-    trace.dir = candidates[Math.floor(Math.random() * candidates.length)];
-  }
+  // 45° heading change: ±1 step on the 8-way compass (e.g. NE -> N or E).
+  const d = trace.dir;
+  const candidates = [(d + 1) % 8, (d + 7) % 8];
+  trace.dir = candidates[Math.floor(Math.random() * candidates.length)];
 
   trace.segmentsLeft = randInt(6, 18);
 }
