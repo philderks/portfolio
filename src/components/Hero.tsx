@@ -1,9 +1,9 @@
 "use client";
 
-import experienceData from "@/data/experience.json";
+import { experienceData } from "@/data/experience-data";
 import { socialProfileLinks } from "@/data/social-links";
 import { SplitFlapText } from "@/components/SplitFlapText";
-import { formatCareerTenure, type ExperienceEntry } from "@/lib/experience";
+import { formatCareerTenure } from "@/lib/experience";
 import { ObfuscatedEmailLink } from "@/components/ObfuscatedEmailLink";
 import type { Lang } from "@/lib/i18n";
 import { content } from "@/lib/i18n";
@@ -37,13 +37,11 @@ export interface HeroProps {
 }
 
 export function Hero({ lang }: HeroProps) {
-  const experienceLabel = formatCareerTenure(
-    experienceData as ExperienceEntry[],
-  );
+  const experienceLabel = formatCareerTenure(experienceData[lang], lang);
   const t = content[lang].hero;
 
   return (
-    <section className="mx-auto max-w-6xl">
+    <section className="relative z-[1] mx-auto max-w-6xl">
       <div className="grid min-h-[70vh] md:grid-cols-[1fr_200px] md:min-h-[72vh]">
         <div className="flex flex-col justify-center border-b border-border px-8 py-16 md:border-b-0 md:border-r md:px-12 md:py-24">
           <div className="mb-6 flex items-center gap-3">
@@ -152,7 +150,7 @@ export function Hero({ lang }: HeroProps) {
               <SplitFlapText target={t.sidebarExperience} lang={lang} />
             </span>
             <span className="font-mono text-[13px] font-bold text-fg">
-              {experienceLabel}
+              <SplitFlapText target={experienceLabel} lang={lang} />
             </span>
           </div>
 

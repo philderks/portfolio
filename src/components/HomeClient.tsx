@@ -3,6 +3,7 @@
 import { About } from "@/components/About";
 import { ContactSection } from "@/components/ContactSection";
 import { ExperienceSection } from "@/components/ExperienceSection";
+import { CircuitBackground } from "@/components/CircuitBackground";
 import { Hero } from "@/components/Hero";
 import { Navbar } from "@/components/Navbar";
 import { ProjectsSection } from "@/components/ProjectsSection";
@@ -24,7 +25,10 @@ export function HomeClient({ repos }: HomeClientProps) {
         onLangChange={setLang}
         nav={content[lang].nav}
       />
-      <Hero lang={lang} />
+      <div className="relative">
+        <CircuitBackground />
+        <Hero lang={lang} />
+      </div>
       <main>
         <About lang={lang} />
         <ExperienceSection lang={lang} />
