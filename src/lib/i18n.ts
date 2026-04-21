@@ -96,6 +96,16 @@ export interface Content {
     versionDate: string;
     imprintLink: string;
   };
+  notFound: {
+    metaTitle: string;
+    metaDescription: string;
+    statusCode: string;
+    gameOver: string;
+    heading: string;
+    body: string;
+    homeCta: string;
+    continueHint: string;
+  };
 }
 
 export const content: Record<Lang, Content> = {
@@ -202,6 +212,16 @@ export const content: Record<Lang, Content> = {
       versionDate: "April 7, 2026",
       imprintLink: "Imprint",
     },
+    notFound: {
+      metaTitle: "404 — Page not found | derks.dev",
+      metaDescription: "The page you are looking for does not exist.",
+      statusCode: "404",
+      gameOver: "— GAME OVER —",
+      heading: "This page doesn't exist.",
+      body: "The page you tried to reach was moved, renamed, or never booted up in the first place.",
+      homeCta: "Return to home",
+      continueHint: "[Press any key to continue]",
+    },
   },
   de: {
     nav: {
@@ -305,6 +325,16 @@ export const content: Record<Lang, Content> = {
       versionHeading: "7. Stand",
       versionDate: "07.04.2026",
       imprintLink: "Zum Impressum",
+    },
+    notFound: {
+      metaTitle: "404 — Seite nicht gefunden | derks.dev",
+      metaDescription: "Die gesuchte Seite existiert nicht.",
+      statusCode: "404",
+      gameOver: "— GAME OVER —",
+      heading: "Diese Seite existiert nicht.",
+      body: "Die aufgerufene Seite wurde verschoben, umbenannt oder ist nie gestartet.",
+      homeCta: "Zurück zur Startseite",
+      continueHint: "[Beliebige Taste drücken, um fortzufahren]",
     },
   },
 };
