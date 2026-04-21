@@ -6,7 +6,7 @@ export function Contact() {
       <div className="mx-auto max-w-6xl">
         <p className="mb-12 text-sm text-muted">03 &mdash; Contact</p>
 
-        <h2 className="font-display text-4xl font-extrabold tracking-tight md:text-5xl">
+        <h2 className="font-mono text-4xl font-extrabold tracking-tight md:text-5xl">
           Let&apos;s build something good.
         </h2>
 

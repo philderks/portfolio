@@ -52,7 +52,7 @@ export function NotFoundView() {
           {t.gameOver}
         </p>
 
-        <h1 className="mt-10 font-display text-3xl font-extrabold tracking-tight text-fg sm:text-4xl">
+        <h1 className="mt-10 font-mono text-3xl font-extrabold tracking-tight text-fg sm:text-4xl">
           <SplitFlapText target={t.heading} lang={lang} />
         </h1>
 

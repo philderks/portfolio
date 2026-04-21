@@ -58,7 +58,7 @@ export function ProjectsSection({ repos, lang }: ProjectsSectionProps) {
                   {String(i + 1).padStart(2, "0")}
                 </span>
 
-                <h3 className="mt-2 font-display text-lg font-bold text-fg">
+                <h3 className="mt-2 font-mono text-lg font-bold text-fg">
                   {formatRepoName(repo.name)}
                 </h3>
 
@@ -124,7 +124,7 @@ export function ProjectsSection({ repos, lang }: ProjectsSectionProps) {
                 <span className="font-mono text-xs font-bold text-yellow">
                   {String(repos.length + 1).padStart(2, "0")}
                 </span>
-                <p className="mt-3 font-display text-lg font-bold text-fg">
+                <p className="mt-3 font-mono text-lg font-bold text-fg">
                   <SplitFlapText target={t.comingSoonTitle} lang={lang} />
                 </p>
                 <p className="mt-1 font-sans text-sm text-dim">

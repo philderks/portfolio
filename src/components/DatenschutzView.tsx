@@ -25,7 +25,7 @@ export function DatenschutzView() {
     <>
       <LegalPageHeader lang={lang} onLangChange={setLang} />
       <main className="mx-auto max-w-4xl px-6 py-16">
-        <h1 className="font-display text-4xl font-extrabold tracking-tight text-fg">
+        <h1 className="font-mono text-4xl font-extrabold tracking-tight text-fg">
           <SplitFlapText target={t.pageTitle} lang={lang} />
         </h1>
 

@@ -44,7 +44,7 @@ export function ContactSection({ lang }: ContactSectionProps) {
 
         <div className="flex flex-col justify-between gap-12 md:flex-row md:items-end">
           <div>
-            <h2 className="font-display text-3xl font-extrabold tracking-tight text-fg md:text-4xl">
+            <h2 className="font-mono text-3xl font-extrabold tracking-tight text-fg md:text-4xl">
               <SplitFlapText target={t.heading} lang={lang} />
             </h2>
             <p className="mt-4 max-w-lg font-sans text-base leading-relaxed text-dim">
