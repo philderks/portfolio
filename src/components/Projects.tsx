@@ -42,7 +42,7 @@ export function Projects() {
                   </span>
                 </div>
 
-                <h3 className="font-display text-lg font-extrabold tracking-tight">
+                <h3 className="font-mono text-lg font-extrabold tracking-tight">
                   {project.title}
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">

@@ -44,7 +44,7 @@ export function About({ lang }: AboutProps) {
 
         <div className="grid gap-16 md:grid-cols-2">
           <div>
-            <h2 className="font-display text-3xl font-extrabold tracking-tight text-fg md:text-4xl">
+            <h2 className="font-mono text-3xl font-extrabold tracking-tight text-fg md:text-4xl">
               <SplitFlapText target={t.headingLine1} lang={lang} />
               <br />
               <SplitFlapText target={t.headingLine2} lang={lang} />
