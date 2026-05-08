@@ -16,13 +16,14 @@ export interface HomeClientProps {
 }
 
 export function HomeClient({ repos }: HomeClientProps) {
-  const { lang, setLang } = useLanguage();
+  const { lang, setLang, toggleAurebesh } = useLanguage();
 
   return (
     <>
       <Navbar
         lang={lang}
         onLangChange={setLang}
+        onAurebeshToggle={toggleAurebesh}
         nav={content[lang].nav}
       />
       <div className="relative">

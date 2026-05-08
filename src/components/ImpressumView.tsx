@@ -9,7 +9,7 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { content } from "@/lib/i18n";
 
 export function ImpressumView() {
-  const { lang, setLang } = useLanguage();
+  const { lang, setLang, toggleAurebesh } = useLanguage();
   const t = content[lang].impressum;
 
   useEffect(() => {
@@ -22,7 +22,7 @@ export function ImpressumView() {
 
   return (
     <>
-      <LegalPageHeader lang={lang} onLangChange={setLang} />
+      <LegalPageHeader lang={lang} onLangChange={setLang} onAurebeshToggle={toggleAurebesh} />
       <main className="mx-auto max-w-4xl px-6 py-16">
         <h1 className="font-mono text-4xl font-extrabold tracking-tight text-fg">
           <SplitFlapText target={t.pageTitle} lang={lang} />

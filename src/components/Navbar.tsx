@@ -29,10 +29,11 @@ const navDefs: readonly {
 export interface NavbarProps {
   lang: Lang;
   onLangChange: (next: Lang) => void;
+  onAurebeshToggle?: () => void;
   nav: Content["nav"];
 }
 
-export function Navbar({ lang, onLangChange, nav }: NavbarProps) {
+export function Navbar({ lang, onLangChange, onAurebeshToggle, nav }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -110,7 +111,7 @@ export function Navbar({ lang, onLangChange, nav }: NavbarProps) {
               <Menu className="h-5 w-5" aria-hidden strokeWidth={1.75} />
             )}
           </button>
-          <LangToggle lang={lang} onToggle={onLangChange} />
+          <LangToggle lang={lang} onToggle={onLangChange} onAurebeshToggle={onAurebeshToggle} />
           <ThemeToggle />
         </div>
       </div>
