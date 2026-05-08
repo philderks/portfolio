@@ -12,6 +12,8 @@ export interface Content {
     experience: string;
     projects: string;
     contact: string;
+    openMenu: string;
+    closeMenu: string;
   };
   hero: {
     label: string;
@@ -115,6 +117,8 @@ export const content: Record<Lang, Content> = {
       experience: "Experience",
       projects: "Projects",
       contact: "Contact",
+      openMenu: "Open section menu",
+      closeMenu: "Close section menu",
     },
     hero: {
       label: "Zurich, Switzerland",
@@ -229,6 +233,8 @@ export const content: Record<Lang, Content> = {
       experience: "Erfahrung",
       projects: "Projekte",
       contact: "Kontakt",
+      openMenu: "Abschnittsmenü öffnen",
+      closeMenu: "Abschnittsmenü schließen",
     },
     hero: {
       label: "Zürich, Schweiz",

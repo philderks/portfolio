@@ -9,7 +9,7 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { content } from "@/lib/i18n";
 
 export function NotFoundView() {
-  const { lang, setLang } = useLanguage();
+  const { lang, setLang, toggleAurebesh } = useLanguage();
   const router = useRouter();
   const t = content[lang].notFound;
 
@@ -35,7 +35,7 @@ export function NotFoundView() {
 
   return (
     <>
-      <LegalPageHeader lang={lang} onLangChange={setLang} />
+      <LegalPageHeader lang={lang} onLangChange={setLang} onAurebeshToggle={toggleAurebesh} />
       <main className="mx-auto flex min-h-[calc(100vh-65px)] max-w-4xl flex-col items-center justify-center px-6 py-16 text-center">
         <p
           className="insert-coin-arcade-text text-[56px] leading-none text-red sm:text-[96px]"

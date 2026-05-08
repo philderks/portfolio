@@ -1,6 +1,23 @@
 @import "tailwindcss";
 @config "../../tailwind.config.ts";
 
+/* ── FT Aurebesh — SIL Open Font License 1.1 — Rodrigo Fuenzalida / ChewKeanHo ── */
+@font-face {
+  font-family: "FT Aurebesh";
+  src: url("/fonts/FT.Aurebesh-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "FT Aurebesh";
+  src: url("/fonts/FT.Aurebesh-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
@@ -229,4 +246,18 @@ body {
   100% {
     opacity: 0.25;
   }
+}
+
+/* ── Aurebesh easter-egg font override ──
+   Applied globally when html[data-aurebesh="true"] is set.
+   Explicitly excluded from the InsertCoin arcade overlay so its
+   "Press Start 2P" text stays readable. ── */
+
+html[data-aurebesh="true"] body,
+html[data-aurebesh="true"] :not(.insert-coin-overlay):not(.insert-coin-overlay *) {
+  --font-display: "FT Aurebesh", monospace;
+  --font-sans: "FT Aurebesh", monospace;
+  --font-mono: "FT Aurebesh", monospace;
+  font-family: "FT Aurebesh", monospace;
+  letter-spacing: 0.04em;
 }

@@ -9,9 +9,10 @@ import { content, type Lang } from "@/lib/i18n";
 export interface LegalPageHeaderProps {
   lang: Lang;
   onLangChange: (next: Lang) => void;
+  onAurebeshToggle?: () => void;
 }
 
-export function LegalPageHeader({ lang, onLangChange }: LegalPageHeaderProps) {
+export function LegalPageHeader({ lang, onLangChange, onAurebeshToggle }: LegalPageHeaderProps) {
   const t = content[lang].legal;
 
   return (
@@ -21,7 +22,7 @@ export function LegalPageHeader({ lang, onLangChange }: LegalPageHeaderProps) {
           <SplitFlapText target={t.backHome} lang={lang} />
         </Link>
         <div className="flex shrink-0 items-center gap-3">
-          <LangToggle lang={lang} onToggle={onLangChange} />
+          <LangToggle lang={lang} onToggle={onLangChange} onAurebeshToggle={onAurebeshToggle} />
           <ThemeToggle />
         </div>
       </div>
