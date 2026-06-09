@@ -49,7 +49,7 @@ export function Hero({ lang }: HeroProps) {
   return (
     <section className="relative z-[1] mx-auto max-w-6xl">
       <div
-        className="pointer-events-none absolute right-6 top-7 z-[2] hidden font-mono text-[9px] uppercase tracking-[0.2em] text-muted md:block"
+        className="pointer-events-none absolute left-6 top-7 z-[2] hidden font-mono text-[9px] uppercase tracking-[0.2em] text-muted md:block"
         aria-hidden="true"
       >
         ZRH&nbsp;&nbsp;47.3744° N / 8.5410° E
