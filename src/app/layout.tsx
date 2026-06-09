@@ -25,9 +25,67 @@ const dmSans = DM_Sans({
   display: "swap",
 });
 
+const siteUrl = "https://derks.dev";
+const siteTitle = "Philipp Derks | Software Engineer";
+const siteDescription =
+  "Portfolio of Philipp Derks, a Zurich-based software engineer focused on full-stack development and distributed systems.";
+
 export const metadata: Metadata = {
-  title: "Philipp Derks | Portfolio",
-  description: "Software engineer portfolio — Philipp Derks",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: siteTitle,
+    template: "%s | derks.dev",
+  },
+  description: siteDescription,
+  applicationName: "derks.dev",
+  authors: [{ name: "Philipp Derks", url: siteUrl }],
+  creator: "Philipp Derks",
+  publisher: "Philipp Derks",
+  keywords: [
+    "Philipp Derks",
+    "software engineer",
+    "full-stack developer",
+    "distributed systems",
+    "ETH Zürich",
+    "Zurich",
+    "portfolio",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "profile",
+    url: siteUrl,
+    title: siteTitle,
+    description: siteDescription,
+    siteName: "derks.dev",
+    locale: "en_US",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Philipp Derks — Software Engineer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteTitle,
+    description: siteDescription,
+    images: ["/opengraph-image"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
 };
 
 export default function RootLayout({
