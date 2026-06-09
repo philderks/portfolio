@@ -91,14 +91,14 @@ export function Hero({ lang }: HeroProps) {
             <SplitFlapText target={t.tagline.after} lang={lang} />
           </p>
 
-          <div className="mt-8 flex items-center gap-3">
-            <ObfuscatedEmailLink className="inline-flex items-center gap-1.5 bg-cyan px-5 py-2.5 font-mono text-[10px] font-bold uppercase tracking-widest text-white dark:text-[#0a0a0a]">
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <ObfuscatedEmailLink className="inline-flex min-h-11 items-center gap-1.5 bg-cyan px-5 py-2.5 font-mono text-[10px] font-bold uppercase tracking-widest text-white dark:text-[#0a0a0a]">
               <Mail className="h-3 w-3" aria-hidden="true" />
               <SplitFlapText target={t.ctaPrimary} lang={lang} />
             </ObfuscatedEmailLink>
             <a
               href="#projects"
-              className="inline-flex items-center gap-1.5 border border-border px-5 py-2.5 font-mono text-[10px] font-bold uppercase tracking-widest text-fg transition-colors hover:border-muted"
+              className="inline-flex min-h-11 items-center gap-1.5 border border-border px-5 py-2.5 font-mono text-[10px] font-bold uppercase tracking-widest text-fg transition-colors hover:border-muted"
             >
               <FolderKanban className="h-3 w-3" aria-hidden="true" />
               <SplitFlapText target={t.ctaSecondary} lang={lang} />
@@ -116,7 +116,7 @@ export function Hero({ lang }: HeroProps) {
                 aria-label={link.ariaLabel}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-widest text-muted transition-colors hover:text-cyan"
+                className="inline-flex min-h-11 items-center gap-1.5 py-2 font-mono text-[10px] uppercase tracking-widest text-muted transition-colors hover:text-cyan"
               >
                 <SocialIcon icon={link.icon} />
                 {link.label}

@@ -73,13 +73,13 @@ export function ThemeToggle() {
   );
 
   if (!mounted) {
-    return <button className="h-8 w-8" aria-label="Toggle theme" />;
+    return <button className="h-11 w-11" aria-label="Toggle theme" />;
   }
 
   return (
     <button
       onClick={toggle}
-      className="flex h-8 w-8 items-center justify-center border border-border text-dim transition-colors hover:text-fg hover:border-dim"
+      className="flex h-11 w-11 items-center justify-center border border-border text-dim transition-colors hover:text-fg hover:border-dim focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan"
       aria-label="Toggle theme"
     >
       {theme === "dark" ? (

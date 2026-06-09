@@ -50,10 +50,10 @@ export function LangToggle({ lang, onToggle, onAurebeshToggle }: LangToggleProps
       <button
         type="button"
         onClick={() => handleRedundantClick("en")}
-        className={`px-2 py-1 font-mono text-[12px] tracking-[0.08em] transition-colors ${
+        className={`min-h-11 min-w-11 px-3 py-2 font-mono text-[12px] tracking-[0.08em] transition-colors ${
           lang === "en"
-            ? "bg-red text-fg"
-            : "bg-transparent text-muted hover:bg-bg-2"
+            ? "bg-[#b00000] text-white"
+            : "bg-transparent text-muted hover:bg-bg-2 hover:text-fg"
         }`}
         aria-pressed={lang === "en"}
       >
@@ -62,10 +62,10 @@ export function LangToggle({ lang, onToggle, onAurebeshToggle }: LangToggleProps
       <button
         type="button"
         onClick={() => handleRedundantClick("de")}
-        className={`border-l border-border px-2 py-1 font-mono text-[12px] tracking-[0.08em] transition-colors ${
+        className={`min-h-11 min-w-11 border-l border-border px-3 py-2 font-mono text-[12px] tracking-[0.08em] transition-colors ${
           lang === "de"
-            ? "bg-red text-fg"
-            : "bg-transparent text-muted hover:bg-bg-2"
+            ? "bg-[#b00000] text-white"
+            : "bg-transparent text-muted hover:bg-bg-2 hover:text-fg"
         }`}
         aria-pressed={lang === "de"}
       >

@@ -66,7 +66,7 @@ export function Navbar({ lang, onLangChange, onAurebeshToggle, nav }: NavbarProp
   }, []);
 
   const sectionLinkClass =
-    "inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wide text-muted transition-colors hover:text-fg sm:text-[10px] sm:tracking-widest";
+    "inline-flex min-h-11 items-center gap-2 px-2 -mx-2 font-mono text-xs uppercase tracking-wide text-muted transition-colors hover:text-fg sm:text-[10px] sm:tracking-widest";
 
   return (
     <header

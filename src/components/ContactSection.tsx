@@ -52,8 +52,8 @@ export function ContactSection({ lang }: ContactSectionProps) {
             </p>
           </div>
 
-          <nav className="flex flex-col items-start gap-3 md:items-end">
-            <ObfuscatedEmailLink className="inline-flex items-center gap-1.5 font-mono text-[13px] uppercase tracking-[0.14em] text-dim hover:text-cyan transition-colors duration-150">
+          <nav className="flex flex-col items-start gap-2 md:items-end">
+            <ObfuscatedEmailLink className="inline-flex min-h-11 items-center gap-1.5 py-2 font-mono text-[13px] uppercase tracking-[0.14em] text-dim hover:text-cyan transition-colors duration-150">
               <Mail className="h-3.5 w-3.5" aria-hidden="true" />
               <SplitFlapText target={t.emailLabel} lang={lang} />
             </ObfuscatedEmailLink>
@@ -65,7 +65,7 @@ export function ContactSection({ lang }: ContactSectionProps) {
                 {...(link.external
                   ? { target: "_blank", rel: "noopener noreferrer" }
                   : {})}
-                className="inline-flex items-center gap-1.5 font-mono text-[13px] uppercase tracking-[0.14em] text-dim hover:text-cyan transition-colors duration-150"
+                className="inline-flex min-h-11 items-center gap-1.5 py-2 font-mono text-[13px] uppercase tracking-[0.14em] text-dim hover:text-cyan transition-colors duration-150"
               >
                 <SocialIcon icon={link.icon} />
                 {link.label}
@@ -85,11 +85,11 @@ export function ContactSection({ lang }: ContactSectionProps) {
               &copy; {currentYear}{" "}
               <SplitFlapText target={t.footerCopyright} lang={lang} />
             </span>
-            <div className="flex items-center gap-3">
-              <Link href="/impressum" className="font-mono text-[9px] uppercase tracking-widest text-muted hover:text-fg">
+            <div className="flex items-center gap-2">
+              <Link href="/impressum" className="inline-flex min-h-11 items-center py-2 font-mono text-[9px] uppercase tracking-widest text-muted hover:text-fg">
                 {t.footerImpressum}
               </Link>
-              <Link href="/datenschutz" className="font-mono text-[9px] uppercase tracking-widest text-muted hover:text-fg">
+              <Link href="/datenschutz" className="inline-flex min-h-11 items-center py-2 font-mono text-[9px] uppercase tracking-widest text-muted hover:text-fg">
                 {t.footerPrivacy}
               </Link>
             </div>
