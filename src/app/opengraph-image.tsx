@@ -15,7 +15,7 @@ export default function OpenGraphImage() {
           width: "100%",
           height: "100%",
           display: "flex",
-          background: "#1f1f1f",
+          background: "#161616",
           color: "#f0f0f0",
           fontFamily: "monospace",
           position: "relative",

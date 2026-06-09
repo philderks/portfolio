@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Syne, Space_Mono, DM_Sans } from "next/font/google";
+import { ClickSplash } from "@/components/ClickSplash";
 import { InsertCoinGate } from "@/components/InsertCoinGate";
 import { Providers } from "@/components/Providers";
 import "./globals.css";
@@ -121,6 +122,7 @@ export default function RootLayout({
           <InsertCoinGate>
             <div className="rainbow-line" />
             <div className="noise-overlay" aria-hidden="true" />
+            <ClickSplash />
             {children}
           </InsertCoinGate>
         </Providers>

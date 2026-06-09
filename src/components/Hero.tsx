@@ -24,6 +24,12 @@ const stackItems = [
   { label: "Vercel", color: "var(--color-red)" },
 ];
 
+const decorativePlusMarks = [
+  "left-[58%] top-[18%] text-cyan",
+  "left-[48%] top-[62%] text-yellow",
+  "right-[18%] bottom-[22%] text-green",
+];
+
 function SocialIcon({ icon }: { icon: "github" | "linkedin" }) {
   if (icon === "github") {
     return <GitBranch className="h-3.5 w-3.5" aria-hidden="true" />;
@@ -42,6 +48,24 @@ export function Hero({ lang }: HeroProps) {
 
   return (
     <section className="relative z-[1] mx-auto max-w-6xl">
+      <div
+        className="pointer-events-none absolute right-6 top-7 z-[2] hidden font-mono text-[9px] uppercase tracking-[0.2em] text-muted md:block"
+        aria-hidden="true"
+      >
+        ZRH&nbsp;&nbsp;47.3744° N / 8.5410° E
+      </div>
+
+      <div className="pointer-events-none absolute inset-0 z-[2] hidden md:block" aria-hidden="true">
+        {decorativePlusMarks.map((position) => (
+          <span
+            key={position}
+            className={`absolute font-mono text-lg leading-none opacity-45 ${position}`}
+          >
+            +
+          </span>
+        ))}
+      </div>
+
       <div className="grid min-h-[70vh] md:grid-cols-[1fr_200px] md:min-h-[72vh]">
         <div className="flex flex-col justify-center border-b border-border px-8 py-16 md:border-b-0 md:border-r md:px-12 md:py-24">
           <div className="mb-6 flex items-center gap-3">
