@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
+import { AurebeshNotice } from "@/components/AurebeshNotice";
 import { LegalPageHeader } from "@/components/LegalPageHeader";
 import { ObfuscatedEmailLink } from "@/components/ObfuscatedEmailLink";
 import { SplitFlapText } from "@/components/SplitFlapText";
@@ -9,7 +10,7 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { content } from "@/lib/i18n";
 
 export function ImpressumView() {
-  const { lang, setLang, toggleAurebesh } = useLanguage();
+  const { lang, setLang, aurebesh, toggleAurebesh, disableAurebesh } = useLanguage();
   const t = content[lang].impressum;
 
   useEffect(() => {
@@ -64,11 +65,12 @@ export function ImpressumView() {
         </div>
 
         <div className="mt-10">
-          <Link href="/datenschutz" className="font-mono text-xs uppercase tracking-widest text-cyan hover:opacity-80">
+          <Link href="/datenschutz" className="inline-flex min-h-11 items-center font-mono text-xs uppercase tracking-widest text-cyan hover:opacity-80">
             <SplitFlapText target={t.privacyLink} lang={lang} />
           </Link>
         </div>
       </main>
+      <AurebeshNotice active={aurebesh} onDisable={disableAurebesh} />
     </>
   );
 }

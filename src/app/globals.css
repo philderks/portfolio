@@ -250,14 +250,20 @@ body {
 
 /* ── Aurebesh easter-egg font override ──
    Applied globally when html[data-aurebesh="true"] is set.
-   Explicitly excluded from the InsertCoin arcade overlay so its
-   "Press Start 2P" text stays readable. ── */
+   Explicitly excluded from the InsertCoin arcade overlay and
+   the escape notice so users can always disable it. ── */
 
 html[data-aurebesh="true"] body,
-html[data-aurebesh="true"] :not(.insert-coin-overlay):not(.insert-coin-overlay *) {
+html[data-aurebesh="true"] :not(.insert-coin-overlay):not(.insert-coin-overlay *):not(.aurebesh-escape):not(.aurebesh-escape *) {
   --font-display: "FT Aurebesh", monospace;
   --font-sans: "FT Aurebesh", monospace;
   --font-mono: "FT Aurebesh", monospace;
   font-family: "FT Aurebesh", monospace;
   letter-spacing: 0.04em;
+}
+
+html[data-aurebesh="true"] .aurebesh-escape,
+html[data-aurebesh="true"] .aurebesh-escape * {
+  font-family: "DM Sans", Arial, sans-serif;
+  letter-spacing: normal;
 }

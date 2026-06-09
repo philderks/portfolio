@@ -1,6 +1,7 @@
 "use client";
 
 import { About } from "@/components/About";
+import { AurebeshNotice } from "@/components/AurebeshNotice";
 import { ContactSection } from "@/components/ContactSection";
 import { ExperienceSection } from "@/components/ExperienceSection";
 import { CircuitBackground } from "@/components/CircuitBackground";
@@ -16,7 +17,7 @@ export interface HomeClientProps {
 }
 
 export function HomeClient({ repos }: HomeClientProps) {
-  const { lang, setLang, toggleAurebesh } = useLanguage();
+  const { lang, setLang, aurebesh, toggleAurebesh, disableAurebesh } = useLanguage();
 
   return (
     <>
@@ -36,6 +37,7 @@ export function HomeClient({ repos }: HomeClientProps) {
         <ProjectsSection repos={repos} lang={lang} />
       </main>
       <ContactSection lang={lang} />
+      <AurebeshNotice active={aurebesh} onDisable={disableAurebesh} />
     </>
   );
 }

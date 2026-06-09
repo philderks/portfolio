@@ -3,13 +3,14 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { AurebeshNotice } from "@/components/AurebeshNotice";
 import { LegalPageHeader } from "@/components/LegalPageHeader";
 import { SplitFlapText } from "@/components/SplitFlapText";
 import { useLanguage } from "@/hooks/useLanguage";
 import { content } from "@/lib/i18n";
 
 export function NotFoundView() {
-  const { lang, setLang, toggleAurebesh } = useLanguage();
+  const { lang, setLang, aurebesh, toggleAurebesh, disableAurebesh } = useLanguage();
   const router = useRouter();
   const t = content[lang].notFound;
 
@@ -71,6 +72,7 @@ export function NotFoundView() {
           {t.continueHint}
         </p>
       </main>
+      <AurebeshNotice active={aurebesh} onDisable={disableAurebesh} />
     </>
   );
 }

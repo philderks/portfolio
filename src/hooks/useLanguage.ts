@@ -11,16 +11,19 @@ export function useLanguage(): {
   setLang: Dispatch<SetStateAction<Lang>>;
   aurebesh: boolean;
   toggleAurebesh: () => void;
+  disableAurebesh: () => void;
 } {
   const [lang, setLangState] = useState<Lang>("en");
   const [aurebesh, setAurebeshState] = useState(false);
 
   useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored === "de" || stored === "en") {
-      setLangState(stored);
-    }
-    setAurebeshState(localStorage.getItem(AUREBESH_KEY) === "1");
+    window.setTimeout(() => {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored === "de" || stored === "en") {
+        setLangState(stored);
+      }
+      setAurebeshState(sessionStorage.getItem(AUREBESH_KEY) === "1");
+    }, 0);
   }, []);
 
   useEffect(() => {
@@ -42,10 +45,15 @@ export function useLanguage(): {
   const toggleAurebesh = useCallback(() => {
     setAurebeshState((prev) => {
       const next = !prev;
-      localStorage.setItem(AUREBESH_KEY, next ? "1" : "0");
+      sessionStorage.setItem(AUREBESH_KEY, next ? "1" : "0");
       return next;
     });
   }, []);
 
-  return { lang, setLang, aurebesh, toggleAurebesh };
+  const disableAurebesh = useCallback(() => {
+    sessionStorage.removeItem(AUREBESH_KEY);
+    setAurebeshState(false);
+  }, []);
+
+  return { lang, setLang, aurebesh, toggleAurebesh, disableAurebesh };
 }
