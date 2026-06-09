@@ -14,7 +14,7 @@ export const experienceData: Record<Lang, ExperienceEntry[]> = {
       location: "Zürich, Switzerland",
       description:
         "Full-stack development in a fast-paced startup environment at ETH Zürich.",
-      tags: ["Python", "Customerservice"],
+      tags: ["Python", "Customer Support"],
     },
     {
       role: "Apprentice Software Developer EFZ",
@@ -42,7 +42,7 @@ export const experienceData: Record<Lang, ExperienceEntry[]> = {
       location: "Zürich, Schweiz",
       description:
         "Full-Stack-Entwicklung in einem schnelllebigen Startup-Umfeld an der ETH Zürich.",
-      tags: ["Python", "Customerservice"],
+      tags: ["Python", "Kundensupport"],
     },
     {
       role: "Lernender Applikationsentwickler EFZ",
