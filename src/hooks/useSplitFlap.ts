@@ -16,22 +16,44 @@ export interface SplitFlapChar {
   scrambling: boolean;
 }
 
+function targetChars(target: string): SplitFlapChar[] {
+  return Array.from(target, (char) => ({ char, scrambling: false }));
+}
+
 function staggerFor(length: number): number {
   return Math.min(22, 300 / Math.max(length - 1, 1));
+}
+
+function prefersReducedMotion(): boolean {
+  return (
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
 }
 
 export function useSplitFlap(
   target: string,
   trigger: Lang,
 ): { chars: SplitFlapChar[]; isScrambling: boolean } {
-  const [chars, setChars] = useState<SplitFlapChar[]>([]);
+  const [chars, setChars] = useState<SplitFlapChar[]>(() => targetChars(target));
   const startMsRef = useRef<number | null>(null);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
-    if (target.length === 0) {
-      setChars([]);
-      return;
+    if (intervalRef.current !== null) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+
+    if (prefersReducedMotion() || target.length === 0) {
+      const timeoutId = window.setTimeout(() => {
+        setChars(targetChars(target));
+      }, 0);
+
+      return () => {
+        window.clearTimeout(timeoutId);
+        startMsRef.current = null;
+      };
     }
 
     const stagger = staggerFor(target.length);
@@ -43,7 +65,10 @@ export function useSplitFlap(
       }
       return { char: randomPoolChar(), scrambling: true };
     });
-    setChars(initial);
+
+    const initialTimeoutId = window.setTimeout(() => {
+      setChars(initial);
+    }, 0);
 
     const runTick = () => {
       const startMs = startMsRef.current;
@@ -89,6 +114,7 @@ export function useSplitFlap(
     runTick();
 
     return () => {
+      window.clearTimeout(initialTimeoutId);
       if (intervalRef.current !== null) {
         clearInterval(intervalRef.current);
         intervalRef.current = null;

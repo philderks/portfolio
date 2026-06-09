@@ -219,6 +219,14 @@ export function CircuitBackground() {
     resize();
     window.addEventListener("resize", resize);
 
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (motionQuery.matches) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      return () => {
+        window.removeEventListener("resize", resize);
+      };
+    }
+
     const colors = readColors();
     const traces: Trace[] = [];
     for (let i = 0; i < MAX_TRACES; i++) {

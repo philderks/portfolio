@@ -32,6 +32,19 @@ export default function InsertCoinScreen({
     onDismissed?.();
   }, [onDismissed]);
 
+  const dismissImmediately = useCallback(() => {
+    if (dismissStarted.current) return;
+    dismissStarted.current = true;
+    sessionStorage.setItem(INSERT_COIN_STORAGE_KEY, "1");
+    if (autoTimerRef.current) {
+      clearTimeout(autoTimerRef.current);
+      autoTimerRef.current = null;
+    }
+    clearExitTimers();
+    setShouldRender(false);
+    onDismissed?.();
+  }, [clearExitTimers, onDismissed]);
+
   const startDismiss = useCallback(() => {
     if (dismissStarted.current) return;
     dismissStarted.current = true;
@@ -53,6 +66,11 @@ export default function InsertCoinScreen({
   useEffect(() => {
     if (!shouldRender || phase !== "coin") return;
 
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const t = window.setTimeout(dismissImmediately, 0);
+      return () => window.clearTimeout(t);
+    }
+
     const onKey = (e: KeyboardEvent) => {
       if (e.code === "Space" || e.key === " ") {
         e.preventDefault();
@@ -70,7 +88,7 @@ export default function InsertCoinScreen({
         autoTimerRef.current = null;
       }
     };
-  }, [shouldRender, phase, startDismiss]);
+  }, [shouldRender, phase, startDismiss, dismissImmediately]);
 
   useEffect(() => {
     return () => {
@@ -87,7 +105,8 @@ export default function InsertCoinScreen({
         phase === "fadeOut" ? "insert-coin-overlay--fade-out" : ""
       }`}
       style={{ zIndex: 9999, background: "#1a1820" }}
-      role="presentation"
+      role="dialog"
+      aria-label="Portfolio intro"
       aria-live="polite"
     >
       <div className="flex flex-col items-center gap-6 px-4 text-center">
@@ -105,6 +124,13 @@ export default function InsertCoinScreen({
             <p className="insert-coin-hint insert-coin-arcade-text text-[10px] leading-relaxed text-[#ccc]">
               [Press Space to Continue]
             </p>
+            <button
+              type="button"
+              onClick={dismissImmediately}
+              className="insert-coin-arcade-text border border-[#555] px-4 py-3 text-[9px] uppercase tracking-[0.18em] text-[#ccc] transition-colors hover:border-[#84f1e8] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#84f1e8]"
+            >
+              Skip intro
+            </button>
           </>
         ) : (
           <p className="insert-coin-arcade-text text-[14px] leading-relaxed text-[#f97316]">
