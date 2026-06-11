@@ -3,15 +3,23 @@
 import { useEffect, useRef, useState } from "react";
 
 const rayCount = 6;
+const splashColors = [
+  "var(--color-cyan)",
+  "var(--color-green)",
+  "var(--color-yellow)",
+  "var(--color-red)",
+];
 
 interface Splash {
   id: number;
   x: number;
   y: number;
+  color: string;
 }
 
 export function ClickSplash() {
   const [splashes, setSplashes] = useState<Splash[]>([]);
+  const colorIndexRef = useRef(0);
   const idRef = useRef(0);
 
   useEffect(() => {
@@ -21,6 +29,8 @@ export function ClickSplash() {
       if (motionQuery.matches) return;
 
       const id = idRef.current++;
+      const color = splashColors[colorIndexRef.current % splashColors.length];
+      colorIndexRef.current += 1;
 
       setSplashes((current) => [
         ...current.slice(-7),
@@ -28,12 +38,13 @@ export function ClickSplash() {
           id,
           x: event.clientX,
           y: event.clientY,
+          color,
         },
       ]);
 
       window.setTimeout(() => {
         setSplashes((current) => current.filter((splash) => splash.id !== id));
-      }, 560);
+      }, 440);
     };
 
     window.addEventListener("pointerdown", handlePointerDown, { passive: true });
@@ -52,6 +63,7 @@ export function ClickSplash() {
           style={{
             left: splash.x,
             top: splash.y,
+            color: splash.color,
           }}
         >
           {Array.from({ length: rayCount }, (_, index) => (

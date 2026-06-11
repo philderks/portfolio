@@ -194,78 +194,91 @@ body {
 
 .click-splash {
   position: absolute;
-  width: 86px;
-  height: 86px;
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(0.55) rotate(-8deg);
-  animation: click-splash 560ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  width: 44px;
+  height: 44px;
+  transform: translate(-50%, -50%);
 }
 
 .click-splash__ray {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 24px;
-  height: 8px;
+  width: 13px;
+  height: 4px;
   border-radius: 999px;
-  background: #f36b86;
-  box-shadow: 0 0 14px rgba(243, 107, 134, 0.22);
-  transform: translate(calc(-50% + var(--ray-x)), calc(-50% + var(--ray-y))) rotate(var(--ray-rot));
+  background: currentColor;
+  opacity: 0;
+  transform: translate(calc(-50% + var(--ray-x)), calc(-50% + var(--ray-y))) rotate(var(--ray-rot)) scale(0.72);
+  transform-origin: center;
+  animation: click-splash-ray 420ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .click-splash__ray:nth-child(1) {
-  --ray-x: -27px;
-  --ray-y: -11px;
-  --ray-rot: 28deg;
+  --ray-x: 0px;
+  --ray-y: -16px;
+  --ray-dx: 0px;
+  --ray-dy: -4px;
+  --ray-rot: 90deg;
 }
 
 .click-splash__ray:nth-child(2) {
-  --ray-x: -24px;
-  --ray-y: 16px;
-  --ray-rot: -18deg;
+  --ray-x: 14px;
+  --ray-y: -8px;
+  --ray-dx: 3px;
+  --ray-dy: -2px;
+  --ray-rot: -30deg;
 }
 
 .click-splash__ray:nth-child(3) {
-  --ray-x: -4px;
-  --ray-y: 31px;
-  --ray-rot: -62deg;
+  --ray-x: 14px;
+  --ray-y: 8px;
+  --ray-dx: 3px;
+  --ray-dy: 2px;
+  --ray-rot: 30deg;
 }
 
 .click-splash__ray:nth-child(4) {
-  --ray-x: 3px;
-  --ray-y: -31px;
-  --ray-rot: 76deg;
+  --ray-x: 0px;
+  --ray-y: 16px;
+  --ray-dx: 0px;
+  --ray-dy: 4px;
+  --ray-rot: 90deg;
 }
 
 .click-splash__ray:nth-child(5) {
-  --ray-x: 29px;
-  --ray-y: -23px;
-  --ray-rot: -62deg;
+  --ray-x: -14px;
+  --ray-y: 8px;
+  --ray-dx: -3px;
+  --ray-dy: 2px;
+  --ray-rot: -30deg;
 }
 
 .click-splash__ray:nth-child(6) {
-  --ray-x: 39px;
-  --ray-y: 5px;
-  --ray-rot: -17deg;
+  --ray-x: -14px;
+  --ray-y: -8px;
+  --ray-dx: -3px;
+  --ray-dy: -2px;
+  --ray-rot: 30deg;
 }
 
-@keyframes click-splash {
+@keyframes click-splash-ray {
   0% {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0.42) rotate(-16deg);
+    transform: translate(calc(-50% + var(--ray-x)), calc(-50% + var(--ray-y))) rotate(var(--ray-rot)) scale(0.72);
   }
   18% {
-    opacity: 0.95;
+    opacity: 0.62;
   }
   100% {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(1.08) rotate(4deg);
+    transform: translate(calc(-50% + var(--ray-x) + var(--ray-dx)), calc(-50% + var(--ray-y) + var(--ray-dy))) rotate(var(--ray-rot)) scale(0.96);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .click-splash {
+  .click-splash__ray {
     animation: none;
+    opacity: 0;
   }
 }
 
