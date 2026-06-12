@@ -200,7 +200,8 @@ export const content: Record<Lang, Content> = {
       hostingP2:
         "The legal basis is the legitimate interest in operating and securing this personal portfolio website. Log data is retained according to Vercel's current retention policies and deleted or anonymized when it is no longer required for these purposes.",
       cookiesHeading: "3. Cookies and local storage",
-      cookiesP1: "This site does not use optional analytics, advertising, or marketing cookies.",
+      cookiesP1:
+        "This site uses self-hosted Umami analytics to understand page visits without advertising or marketing cookies.",
       cookiesP2:
         "Technically necessary local or session storage may be used for presentation preferences, including theme, language, optional Aurebesh display mode for the current browser session, and whether the insert-coin intro was dismissed during the current browser session.",
       externalHeading: "4. External links",
@@ -213,7 +214,7 @@ export const content: Record<Lang, Content> = {
       transferP1:
         "Where providers outside the EU/CH are used, processing is carried out under the applicable data protection safeguards of the provider.",
       versionHeading: "7. Last updated",
-      versionDate: "June 9, 2026",
+      versionDate: "June 12, 2026",
       imprintLink: "Imprint",
     },
     notFound: {
@@ -316,7 +317,8 @@ export const content: Record<Lang, Content> = {
       hostingP2:
         "Rechtsgrundlage ist das berechtigte Interesse am Betrieb und an der Absicherung dieser persönlichen Portfolio-Website. Logdaten werden gemäß den jeweils aktuellen Aufbewahrungsrichtlinien von Vercel gespeichert und gelöscht oder anonymisiert, sobald sie für diese Zwecke nicht mehr erforderlich sind.",
       cookiesHeading: "3. Cookies und Local Storage",
-      cookiesP1: "Diese Website setzt keine optionalen Analyse-, Werbe- oder Marketing-Cookies ein.",
+      cookiesP1:
+        "Diese Website nutzt selbst gehostete Umami-Analytics, um Seitenaufrufe ohne Werbe- oder Marketing-Cookies zu verstehen.",
       cookiesP2:
         "Technisch notwendiger Local Storage oder Session Storage kann für Darstellungspräferenzen verwendet werden, darunter Theme, Sprache, optionaler Aurebesh-Anzeigemodus für die aktuelle Browser-Sitzung und ob das Insert-Coin-Intro in der aktuellen Browser-Sitzung geschlossen wurde.",
       externalHeading: "4. Externe Links",
@@ -329,7 +331,7 @@ export const content: Record<Lang, Content> = {
       transferP1:
         "Soweit Anbieter außerhalb der EU/CH eingesetzt werden, erfolgt die Verarbeitung nach den jeweils anwendbaren datenschutzrechtlichen Garantien des Anbieters.",
       versionHeading: "7. Stand",
-      versionDate: "09.06.2026",
+      versionDate: "12.06.2026",
       imprintLink: "Zum Impressum",
     },
     notFound: {

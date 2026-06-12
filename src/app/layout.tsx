@@ -116,6 +116,11 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
           rel="stylesheet"
         />
+        <script
+          defer
+          src="https://umami.fabricator.site/script.js"
+          data-website-id="4b1b3744-ecb4-424c-b7bc-3431126ab966"
+        />
       </head>
       <body>
         <Providers>
