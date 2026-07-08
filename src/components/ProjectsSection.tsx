@@ -4,7 +4,7 @@ import type { PinnedRepo } from "@/lib/github";
 import { SplitFlapText } from "@/components/SplitFlapText";
 import type { Lang } from "@/lib/i18n";
 import { content } from "@/lib/i18n";
-import { ArrowUpRight, Circle, FolderKanban, Star } from "lucide-react";
+import { ArrowUpRight, Circle, FolderKanban, GitFork, Star } from "lucide-react";
 
 const accentColors = ["text-cyan", "text-green", "text-yellow", "text-red"];
 
@@ -86,12 +86,20 @@ export function ProjectsSection({ repos, lang }: ProjectsSectionProps) {
                       </>
                     )}
                   </div>
-                  {repo.stargazerCount > 0 && (
-                    <span className="inline-flex items-center gap-1">
-                      <Star className="h-3 w-3" aria-hidden="true" />
-                      {repo.stargazerCount}
-                    </span>
-                  )}
+                  <div className="flex items-center gap-2.5">
+                    {repo.stargazerCount > 0 && (
+                      <span className="inline-flex items-center gap-1">
+                        <Star className="h-3 w-3" aria-hidden="true" />
+                        {repo.stargazerCount}
+                      </span>
+                    )}
+                    {repo.forkCount > 0 && (
+                      <span className="inline-flex items-center gap-1">
+                        <GitFork className="h-3 w-3" aria-hidden="true" />
+                        {repo.forkCount}
+                      </span>
+                    )}
+                  </div>
                 </div>
 
                 {repo.topics.length > 0 && (
