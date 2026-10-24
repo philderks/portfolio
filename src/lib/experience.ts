@@ -10,6 +10,7 @@ export type ExperienceEntry = {
   description: string;
   tags: string[];
   postUrl?: string;
+  placements?: { year: string; team: string; current?: boolean }[];
 };
 
 /** Full calendar years completed between two dates (same idea as "age"). */

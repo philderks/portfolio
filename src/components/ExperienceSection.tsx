@@ -106,6 +106,18 @@ export function ExperienceSection({ lang }: ExperienceSectionProps) {
                     <SplitFlapText target={entry.description} lang={lang} />
                   </p>
 
+                  {entry.placements && (
+                    <ol className="mt-4 border-l border-border pl-4 space-y-2" aria-label={lang === "de" ? "Lehrstationen" : "Apprenticeship placements"}>
+                      {entry.placements.map((placement) => (
+                        <li key={placement.year} className="flex flex-wrap items-baseline gap-x-3 gap-y-0.5">
+                          <span className={`w-36 shrink-0 font-mono text-[10px] ${placement.current ? "text-green" : "text-muted"}`}>
+                            {placement.year}
+                          </span>
+                          <span className="font-sans text-[12px] text-fg">{placement.team}</span>
+                        </li>
+                      ))}
+                    </ol>
+                  )}
                   {entry.postUrl && (
                     <a
                       href={entry.postUrl}
@@ -116,20 +128,22 @@ export function ExperienceSection({ lang }: ExperienceSectionProps) {
                       {lang === "de" ? "Zum LinkedIn-Beitrag ↗" : "Read the LinkedIn post ↗"}
                     </a>
                   )}
-                  <div className="flex flex-wrap gap-2 mt-3">
-                    {entry.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className={`font-mono text-[9px] uppercase tracking-[0.08em] px-2 py-0.5 border ${
-                          entry.present
-                            ? "text-cyan border-cyan/30"
-                            : "text-muted border-border"
-                        }`}
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                  {entry.tags.length > 0 && (
+                    <div className="flex flex-wrap gap-2 mt-3">
+                      {entry.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className={`font-mono text-[9px] uppercase tracking-[0.08em] px-2 py-0.5 border ${
+                            entry.present
+                              ? "text-cyan border-cyan/30"
+                              : "text-muted border-border"
+                          }`}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </li>
             ))}
