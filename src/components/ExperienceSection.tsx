@@ -106,6 +106,16 @@ export function ExperienceSection({ lang }: ExperienceSectionProps) {
                     <SplitFlapText target={entry.description} lang={lang} />
                   </p>
 
+                  {entry.postUrl && (
+                    <a
+                      href={entry.postUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-3 inline-block font-mono text-[11px] text-cyan underline underline-offset-4 hover:text-fg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan"
+                    >
+                      {lang === "de" ? "Zum LinkedIn-Beitrag ↗" : "Read the LinkedIn post ↗"}
+                    </a>
+                  )}
                   <div className="flex flex-wrap gap-2 mt-3">
                     {entry.tags.map((tag) => (
                       <span

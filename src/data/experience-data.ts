@@ -4,6 +4,20 @@ import type { ExperienceEntry } from "@/lib/experience";
 export const experienceData: Record<Lang, ExperienceEntry[]> = {
   en: [
     {
+      role: "Software Development Intern",
+      company: "Nrlyze",
+      type: "Internship",
+      period: "Sep — Oct 2026 · 4 weeks",
+      present: false,
+      start: "2026-09-01",
+      end: "2026-10-01",
+      location: "Stockholm, Sweden",
+      description:
+        "Built a modular report generator that turns building sensor data into clear customer reports on energy, temperature, CO₂, humidity, and savings.",
+      tags: ["Python", "React", "Typst"],
+      postUrl: "https://lnkd.in/p/eMY99rbF",
+    },
+    {
       role: "Software Developer",
       company: "Young 'n' Rising, ETH Zürich",
       type: "Apprentice",
@@ -31,6 +45,20 @@ export const experienceData: Record<Lang, ExperienceEntry[]> = {
     },
   ],
   de: [
+    {
+      role: "Praktikant in der Softwareentwicklung",
+      company: "Nrlyze",
+      type: "Praktikum",
+      period: "Sep — Okt 2026 · 4 Wochen",
+      present: false,
+      start: "2026-09-01",
+      end: "2026-10-01",
+      location: "Stockholm, Schweden",
+      description:
+        "Entwicklung eines modularen Berichtsgenerators, der Sensordaten aus Gebäuden in verständliche Kundenberichte zu Energie, Temperatur, CO₂, Luftfeuchtigkeit und Einsparungen umwandelt.",
+      tags: ["Python", "React", "Typst"],
+      postUrl: "https://lnkd.in/p/eMY99rbF",
+    },
     {
       role: "Softwareentwickler",
       company: "Young 'n' Rising, ETH Zürich",

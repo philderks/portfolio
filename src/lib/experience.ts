@@ -9,6 +9,7 @@ export type ExperienceEntry = {
   location: string;
   description: string;
   tags: string[];
+  postUrl?: string;
 };
 
 /** Full calendar years completed between two dates (same idea as "age"). */
